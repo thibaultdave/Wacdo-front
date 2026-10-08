@@ -3,7 +3,7 @@ import { Home } from './pages/home/home';
 import { Login } from './pages/login/login';
 import { Collaborators } from './pages/collaborators/collaborators';
 import { Restaurants } from './pages/restaurants/restaurants';
-import { Postes } from './pages/postes/postes';
+import { Jobs } from './pages/jobs/jobs';
 import { Assignments } from './pages/assignments/assignments';
 
 export const routes: Routes = [
@@ -28,8 +28,8 @@ export const routes: Routes = [
       component: Restaurants
   },
   {
-    path: 'postes',
-    component: Postes
+    path: 'jobs',
+    component: Jobs
   },
   {
     path: 'assignments',
