@@ -4,7 +4,7 @@ import { Login } from './pages/login/login';
 import { Collaborators } from './pages/collaborators/collaborators';
 import { Restaurants } from './pages/restaurants/restaurants';
 import { Postes } from './pages/postes/postes';
-import { Affectations } from './pages/affectations/affectations';
+import { Assignments } from './pages/assignments/assignments';
 
 export const routes: Routes = [
   {
@@ -32,7 +32,7 @@ export const routes: Routes = [
     component: Postes
   },
   {
-    path: 'affectations',
-    component: Affectations
+    path: 'assignments',
+    component: Assignments
   },
 ];
