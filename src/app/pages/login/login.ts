@@ -3,7 +3,6 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import { Router } from '@angular/router';
 
 import { AuthService } from '../../services/auth-service';
-import { LoginRequest } from '../../models/login-request';
 
 @Component({
   imports: [ReactiveFormsModule],
