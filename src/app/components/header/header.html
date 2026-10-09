@@ -4,13 +4,13 @@
     <nav>
       <a class="mr-4" routerLink="/">Accueil</a>
       @if (isAuthenticated()) {
-        <a class="mr-4" routerLink="/login">Connexion</a>
-      } @else {
-        <a class="mr-4" routerLink="/collaborateurs">Collaborateurs</a>
+        <a class="mr-4" routerLink="/collaborators">Collaborateurs</a>
         <a class="mr-4" routerLink="/restaurants">Restaurants</a>
-        <a class="mr-4" routerLink="/postes">Postes</a>
-        <a class="mr-4" routerLink="/affectations">Affectations</a>
-        <button class="underline">Déconnexion</button>
+        <a class="mr-4" routerLink="/jobs">Postes</a>
+        <a class="mr-4" routerLink="/assignments">Affectations</a>
+        <button class="underline" (click)="logout()">Déconnexion</button>
+      } @else {
+        <a class="mr-4" routerLink="/login">Connexion</a>
       }
     </nav>
   </div>

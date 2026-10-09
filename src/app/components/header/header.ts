@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
-import { RouterLink } from "@angular/router";
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink } from "@angular/router";
+import { AuthService } from '../../services/auth-service';
 
 @Component({
   imports: [RouterLink],
@@ -9,9 +10,13 @@ import { RouterLink } from "@angular/router";
 })
 export class Header {
 
-  public isAuthenticated = signal(false);
+  private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
 
-  constructor() {
-      this.isAuthenticated.set(localStorage.getItem('token') != null);
+  readonly isAuthenticated = this.authService.isAuthenticated;
+
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }
