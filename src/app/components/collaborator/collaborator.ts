@@ -12,6 +12,11 @@ export class Collaborator {
 
   @Input() collaborator!: CollaboratorModel;
 
+  isSameUser(): boolean {
+    const userEmail = localStorage.getItem('userEmail');
+    return userEmail === this.collaborator.email;
+  }
+
   public changeDateFormat(dateString: string): string {
     const date = new Date(dateString);
     const day = date.getDate().toString().padStart(2, '0');

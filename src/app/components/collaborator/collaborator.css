@@ -120,6 +120,12 @@
   background: #fee2e2;
 }
 
+.delete-button:disabled {
+  background: #eeeff1;
+  color: #4b5563;
+  cursor: not-allowed;
+}
+
 @media (max-width: 600px) {
   .collaborator-card {
     align-items: stretch;
