@@ -10,11 +10,11 @@ import { environment } from '../../environments/environment';
 })
 export class CollaboratorService {
 
-  private readonly apiUrl = `${environment.apiUrl}`;
+  private readonly apiUrl = `${environment.apiUrl}/api`;
 
   constructor(private http: HttpClient) {}
 
   getCollaborators(): Observable<Collaborator[]> {
-    return this.http.get<Collaborator[]>(this.apiUrl + "/api/collaborators");
+    return this.http.get<Collaborator[]>(`${this.apiUrl}/collaborators`);
   }
 }

@@ -12,7 +12,7 @@ import { environment } from '../../environments/environment';
 })
 export class AuthService {
 
-  private readonly apiUrl = environment.apiUrl;
+  private readonly apiUrl = `${environment.apiUrl}/auth`;
 
   private readonly authenticated = signal(
     localStorage.getItem('token') !== null
@@ -24,7 +24,7 @@ export class AuthService {
 
   login(request: LoginRequest): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(
-      `${this.apiUrl}/auth/login`,
+      `${this.apiUrl}/login`,
       request
     ).pipe(
       tap(response => {
