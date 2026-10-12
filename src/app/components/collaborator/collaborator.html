@@ -1,6 +1,31 @@
-<div class="border rounded p-4 mb-3 shadow flex justify-between items-center bg-white hover:bg-gray-50 transition">
-    <h3>{{ collaborator.firstName }} {{ collaborator.name }}</h3>
-    <p>{{ collaborator.email }}</p>
-    <!--<button class="bg-blue-500 text-white px-3 py-1 rounded" (click)="updateCollaborator()">Modifier</button>
-    <button class="bg-red-500 text-white px-3 py-1 rounded" (click)="deleteCollaborator()">Supprimer</button>-->
-</div>
+<article class="collaborator-card">
+  <div class="collaborator-info">
+    <div class="collaborator-avatar">
+      {{ collaborator.firstName.charAt(0) }}{{ collaborator.name.charAt(0) }}
+    </div>
+
+    <div class="collaborator-details">
+      <div class="collaborator-heading">
+        <h3>{{ collaborator.firstName }} {{ collaborator.name }}</h3>
+
+        @if (collaborator.admin) {
+          <span class="admin-badge">Administrateur</span>
+        } @else {
+          <span class="user-badge">Collaborateur</span>
+        }
+      </div>
+
+      <p class="collaborator-email">{{ collaborator.email }}</p>
+
+      <p class="collaborator-date">
+        Embauché le {{ changeDateFormat(collaborator.firstHireDate) }}
+      </p>
+    </div>
+  </div>
+
+  <div class="collaborator-actions">
+    <button type="button" class="edit-button"> Modifier </button>
+
+    <button type="button" class="delete-button"> Supprimer </button>
+  </div>
+</article>

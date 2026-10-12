@@ -1,14 +1,23 @@
-<div>
-    <h1>Gestion des collaborateurs</h1>
-    <h2>Liste de tous les collaborateurs</h2>
-    <!--<a class="inline-block mb-4 text-blue-600 underline" (click)="createCollaborator()">+ Nouveau collaborateur</a>-->
+<main class="collaborators-page">
+  <header class="page-heading">
+    <div>
+      <h1>Gestion des collaborateurs</h1>
+      <p>Consulte et gère les collaborateurs de Wacdo.</p>
+      <!--<a class="inline-block mb-4 text-blue-600 underline" (click)="createCollaborator()">+ Nouveau collaborateur</a>-->
+    </div>
+  </header>
+
+  <section class="collaborators-section">
+    <h2>Liste des collaborateurs</h2>
 
     @if (collaborators().length > 0) {
+      <div class="collaborators-list">
         @for (collaborator of collaborators(); track collaborator.id) {
-            <app-collaborator [collaborator]="collaborator" />
+          <app-collaborator [collaborator]="collaborator" />
         }
+      </div>
     } @else {
-        <p>Aucun collaborateur disponible.</p>
+      <p class="empty-message">Aucun collaborateur disponible.</p>
     }
-
-</div>
+  </section>
+</main>
