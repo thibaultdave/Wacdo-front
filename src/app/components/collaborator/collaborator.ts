@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Collaborator as CollaboratorModel } from '../../models/collaborator-response';
+import { CollaboratorService } from '../../services/collaborator-service';
 
 @Component({
   selector: 'app-collaborator',
@@ -11,6 +11,7 @@ import { Collaborator as CollaboratorModel } from '../../models/collaborator-res
 export class Collaborator {
 
   @Input() collaborator!: CollaboratorModel;
+  @Output() collaboratorsUpdated = new EventEmitter<boolean>();
 
   isSameUser(): boolean {
     const userEmail = localStorage.getItem('userEmail');
@@ -25,20 +26,17 @@ export class Collaborator {
     return `${day}/${month}/${year}`;
   }
 
-  /*constructor(private http: HttpClient) {
-
-  }
+  constructor(private collaboratorService: CollaboratorService) {  }
 
   public deleteCollaborator() {
-    this.http.delete(`http://localhost:8080/api/collaborators/${this.collaborator.id}`, {
-      headers: { 'Bearer '+ localStorage.getItem('token') }
-    }).subscribe({
+    this.collaboratorService.removeCollaborator(this.collaborator.id).subscribe({
       next: () => {
+        this.collaboratorsUpdated.emit(true);
         console.log(`Collaborator deleted: ${this.collaborator.firstName} ${this.collaborator.name}`);
       },
       error: (error) => {
         console.error('Error deleting collaborator:', error);
       }
     });
-  }*/
+  }
 }

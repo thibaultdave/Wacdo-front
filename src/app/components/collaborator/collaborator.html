@@ -26,6 +26,6 @@
   <div class="collaborator-actions">
     <button type="button" class="edit-button"> Modifier </button>
 
-    <button type="button" class="delete-button" [disabled]="isSameUser()"> Supprimer </button>
+    <button type="button" class="delete-button" [disabled]="isSameUser()" (click)="deleteCollaborator()"> Supprimer </button>
   </div>
 </article>

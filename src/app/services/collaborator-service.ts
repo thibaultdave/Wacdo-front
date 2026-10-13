@@ -10,11 +10,15 @@ import { environment } from '../../environments/environment';
 })
 export class CollaboratorService {
 
-  private readonly apiUrl = `${environment.apiUrl}/api`;
+  private readonly apiUrl = `${environment.apiUrl}/api/collaborators`;
 
   constructor(private http: HttpClient) {}
 
   getCollaborators(): Observable<Collaborator[]> {
-    return this.http.get<Collaborator[]>(`${this.apiUrl}/collaborators`);
+    return this.http.get<Collaborator[]>(`${this.apiUrl}`);
+  }
+
+  removeCollaborator(id: number): Observable<void> { 
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

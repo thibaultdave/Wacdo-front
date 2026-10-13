@@ -17,6 +17,10 @@ export class Collaborators implements OnInit {
   constructor(private collaboratorService: CollaboratorService) { }
   
   ngOnInit(): void {
+    this.refreshCollaborators();
+  }
+
+  public refreshCollaborators() {
     this.collaboratorService.getCollaborators().subscribe({
       next: (collaborators) => {
         console.log('Collaborators retrieved :', collaborators);
@@ -25,6 +29,6 @@ export class Collaborators implements OnInit {
       error: (error) => {
         console.error('Erreur lors de la récupération des collaborateurs :', error);
       }
-    });  
+    });
   }
 }

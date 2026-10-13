@@ -13,7 +13,7 @@
     @if (collaborators().length > 0) {
       <div class="collaborators-list">
         @for (collaborator of collaborators(); track collaborator.id) {
-          <app-collaborator [collaborator]="collaborator" />
+          <app-collaborator [collaborator]="collaborator" (collaboratorsUpdated)="refreshCollaborators()"/>
         }
       </div>
     } @else {
