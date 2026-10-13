@@ -12,6 +12,7 @@ export class Header {
 
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
+  private readonly userEmail = localStorage.getItem('userEmail');
 
   readonly isAuthenticated = this.authService.isAuthenticated;
 
