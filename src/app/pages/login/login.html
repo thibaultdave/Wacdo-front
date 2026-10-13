@@ -1,14 +1,14 @@
 <div class="flex items-center justify-center px-4">
-<form [formGroup]="loginForm" (ngSubmit)="onLogin()"  class="w-full max-w-md bg-white p-8 rounded-lg shadow-md flex flex-col gap-4">
-  <h2>Connexion</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()"  class="w-full max-w-md bg-white p-8 rounded-lg shadow-md flex flex-col gap-4">
+    <h2>Connexion</h2>
 
-  <input type="email" placeholder="Email" formControlName="email">
-  <input type="password" placeholder="Mot de passe" formControlName="password">
+    <input type="email" placeholder="Email" formControlName="email">
+    <input type="password" placeholder="Mot de passe" formControlName="password">
 
-   @if (errorMessage()) {
-    <small >{{ errorMessage() }}</small>
-  }
-  
-  <button>Se connecter</button>
-</form>
+    @if (errorMessage()) {
+      <small >{{ errorMessage() }}</small>
+    }
+    
+    <button>Se connecter</button>
+  </form>
 </div>

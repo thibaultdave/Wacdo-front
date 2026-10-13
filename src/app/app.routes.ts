@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { Home } from './pages/home/home';
 import { Login } from './pages/login/login';
 import { Collaborators } from './pages/collaborators/collaborators';
+import { CreateCollaborator } from './pages/create-collaborator/create-collaborator';
 import { Restaurants } from './pages/restaurants/restaurants';
 import { Jobs } from './pages/jobs/jobs';
 import { Assignments } from './pages/assignments/assignments';
@@ -22,6 +23,10 @@ export const routes: Routes = [
   {
     path: 'collaborators',
     component: Collaborators
+  },
+  {
+    path: 'collaborators/new',
+    component: CreateCollaborator
   },
   {
       path: 'restaurants',

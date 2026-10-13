@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Collaborator } from '../models/collaborator-response';
+import { Collaborator as CollaboratorResponse } from '../models/collaborator-response';
+import { CollaboratorRequest } from '../models/collaborator-request';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -14,11 +15,14 @@ export class CollaboratorService {
 
   constructor(private http: HttpClient) {}
 
-  getCollaborators(): Observable<Collaborator[]> {
-    return this.http.get<Collaborator[]>(`${this.apiUrl}`);
+  getCollaborators(): Observable<CollaboratorResponse[]> {
+    return this.http.get<CollaboratorResponse[]>(`${this.apiUrl}`);
   }
 
   removeCollaborator(id: number): Observable<void> { 
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+  createCollaborator(collaboratorRequest: CollaboratorRequest): Observable<CollaboratorResponse> {
+    return this.http.post<CollaboratorResponse>(`${this.apiUrl}`, collaboratorRequest);
   }
 }
