@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CollaboratorService } from '../../services/collaborator-service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { pastOrPresentDateValidator } from '../../validators/past-or-present-date.validator';
 
 @Component({
   imports: [ReactiveFormsModule],
@@ -20,7 +21,7 @@ export class CreateCollaborator {
       firstName: new FormControl('', Validators.required),
       name: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
-      firstHireDate: new FormControl(''),
+      firstHireDate: new FormControl('', [Validators.required, pastOrPresentDateValidator()]),
       admin: new FormControl(false),
       password: new FormControl('', [Validators.required, Validators.minLength(8)]),
     });

@@ -36,6 +36,11 @@
       <div class="form-element">
         <label for="firstHireDate">Date de première embauche <span>*</span></label>
         <input id="firstHireDate" formControlName="firstHireDate" type="date"/>
+        @if (collaboratorForm.get('firstHireDate')?.hasError('required') && collaboratorForm.get('firstHireDate')?.touched) {
+          <small class="error">La date de première embauche est requise.</small>
+        } @else if (collaboratorForm.get('firstHireDate')?.hasError('futureDate') && collaboratorForm.get('firstHireDate')?.touched) {
+          <small class="error">La date ne peut pas être dans le futur.</small>
+        }
       </div>
 
       <div class="form-element">
