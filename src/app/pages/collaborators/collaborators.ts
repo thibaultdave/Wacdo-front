@@ -28,7 +28,7 @@ export class Collaborators implements OnInit {
         this.collaborators.set(collaborators);
       },
       error: (error) => {
-        console.error('Erreur lors de la récupération des collaborateurs :', error);
+        console.error('Error retrieving collaborators :', error);
       }
     });
   }
