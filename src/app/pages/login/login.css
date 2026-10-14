@@ -7,7 +7,7 @@ form input, form button, form textarea {
   border: 1px solid lightgrey;
 }
 form button {
-  background: #007BFF;
+  background: var(--primary-color);
   color: white;
   border: none;
 }

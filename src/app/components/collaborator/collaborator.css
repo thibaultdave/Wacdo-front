@@ -113,7 +113,7 @@
 
 .delete-button {
   background: #fef2f2;
-  color: #E40204;
+  color: var(--primary-color);
 }
 
 .delete-button:hover {

@@ -1,4 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --primary-color: #E40204;
+}
+
+
 body, html {
   margin: 0;
   padding: 0;
@@ -9,7 +13,7 @@ body, html {
   flex-direction: column;
 }
 header, footer {
-  background-color: #E40204;
+  background-color: var(--primary-color);
   color: white;
   padding: 1em;
 }
