@@ -2,9 +2,10 @@ import { Component, OnInit, signal } from '@angular/core';
 import { Collaborator as CollaboratorComponent } from '../../components/collaborator/collaborator';
 import { Collaborator as CollaboratorModel } from '../../models/collaborator-response';
 import { CollaboratorService } from '../../services/collaborator-service';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [CollaboratorComponent],
+  imports: [CollaboratorComponent, RouterLink],
   selector: 'app-collaborators',
   styleUrl: './collaborators.css',
   templateUrl: './collaborators.html',
