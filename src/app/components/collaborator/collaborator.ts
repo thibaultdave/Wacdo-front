@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Collaborator as CollaboratorModel } from '../../models/collaborator-response';
 import { CollaboratorService } from '../../services/collaborator-service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-collaborator',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './collaborator.html',
   styleUrl: './collaborator.css'
 })

@@ -1,0 +1,70 @@
+<div class="form-container">
+  <form [formGroup]="collaboratorForm" (ngSubmit)="updateCollaborator()">
+
+    <div class="form-heading">
+      <h1>Modifier un collaborateur</h1>
+      <p>Modifiez les informations du collaborateur.</p>
+    </div>
+
+    <div class="form-fields">
+      <div class="form-element">
+        <label for="firstName">Prénom <span>*</span></label>
+        <input id="firstName" formControlName="firstName" type="text" placeholder="Ex. : Gérard" autocomplete="off"/>
+        @if (collaboratorForm.get('firstName')?.hasError('required') && collaboratorForm.get('firstName')?.touched) {
+          <small class="error">Le prénom est requis.</small>
+        }
+      </div>
+
+      <div class="form-element">
+        <label for="lastName">Nom <span>*</span></label>
+        <input id="lastName" formControlName="name" type="text" placeholder="Ex. : Bouchard" autocomplete="off"/>
+        @if (collaboratorForm.get('name')?.hasError('required') && collaboratorForm.get('name')?.touched) {
+          <small class="error">Le nom est requis.</small>
+        }
+      </div>
+
+      <div class="form-element">
+        <label for="email">Adresse e-mail <span>*</span></label>
+        <input id="email" formControlName="email" type="email" placeholder="gerard.bouchard@exemple.fr" autocomplete="off"/>
+        @if (collaboratorForm.get('email')?.hasError('required') && collaboratorForm.get('email')?.touched) {
+          <small class="error">L'adresse e-mail est requise.</small>
+        } @else if (collaboratorForm.get('email')?.hasError('email') && collaboratorForm.get('email')?.touched) {
+          <small class="error">Format d'adresse e-mail invalide.</small>
+        }
+      </div>
+
+      <div class="form-element">
+        <label for="firstHireDate">Date de première embauche <span>*</span></label>
+        <input id="firstHireDate" formControlName="firstHireDate" type="date"/>
+        @if (collaboratorForm.get('firstHireDate')?.hasError('required') && collaboratorForm.get('firstHireDate')?.touched) {
+          <small class="error">La date de première embauche est requise.</small>
+        } @else if (collaboratorForm.get('firstHireDate')?.hasError('futureDate') && collaboratorForm.get('firstHireDate')?.touched) {
+          <small class="error">La date ne peut pas être dans le futur.</small>
+        }
+      </div>
+      
+      <div class="form-element">
+        <label for="password">Mot de passe <span>*</span></label>
+        <input id="password" formControlName="password" type="password" placeholder="Définir un mot de passe"/>
+        @if (collaboratorForm.get('password')?.hasError('required') && collaboratorForm.get('password')?.touched) {
+          <small class="error">Le mot de passe est requis.</small>
+        } @else if (collaboratorForm.get('password')?.hasError('minlength') && collaboratorForm.get('password')?.touched) {
+          <small class="error">Le mot de passe doit contenir au moins 8 caractères.</small>
+        }
+      </div>
+    </div>
+
+    <label class="admin-option" for="admin">
+      <input id="admin" formControlName="admin" type="checkbox" />
+      <span class="admin-option-text">
+        <strong>Administrateur</strong>
+      </span>
+    </label>
+
+    <div class="form-footer">
+      <p class="required-note"><span>*</span> Champs obligatoires</p>
+      <button type="submit" [disabled]="collaboratorForm.invalid">Enregistrer les modifications</button>
+    </div>
+
+  </form>
+</div>

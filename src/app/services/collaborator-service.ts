@@ -19,10 +19,19 @@ export class CollaboratorService {
     return this.http.get<CollaboratorResponse[]>(`${this.apiUrl}`);
   }
 
+  getCollaboratorById(id: number): Observable<CollaboratorResponse> {
+    return this.http.get<CollaboratorResponse>(`${this.apiUrl}/${id}`);
+  }
+
   removeCollaborator(id: number): Observable<void> { 
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
   createCollaborator(collaboratorRequest: CollaboratorRequest): Observable<CollaboratorResponse> {
     return this.http.post<CollaboratorResponse>(`${this.apiUrl}`, collaboratorRequest);
+  }
+
+  updateCollaborator(id: number, collaboratorRequest: CollaboratorRequest): Observable<CollaboratorResponse> {
+    return this.http.put<CollaboratorResponse>(`${this.apiUrl}/${id}`, collaboratorRequest);
   }
 }

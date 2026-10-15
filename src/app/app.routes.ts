@@ -6,6 +6,7 @@ import { CreateCollaborator } from './pages/create-collaborator/create-collabora
 import { Restaurants } from './pages/restaurants/restaurants';
 import { Jobs } from './pages/jobs/jobs';
 import { Assignments } from './pages/assignments/assignments';
+import { UpdateCollaborator } from './pages/update-collaborator/update-collaborator';
 
 export const routes: Routes = [
   {
@@ -27,6 +28,10 @@ export const routes: Routes = [
   {
     path: 'collaborators/new',
     component: CreateCollaborator
+  },
+  {
+    path: 'collaborators/update/:id',
+    component: UpdateCollaborator
   },
   {
       path: 'restaurants',
