@@ -32,6 +32,7 @@ export class UpdateCollaborator {
       admin: new FormControl(false),
       password: new FormControl('', [Validators.required, Validators.minLength(8)]),
     });
+    // TODO handle update without password change, maybe with a checkbox to enable password change
   }
 
   ngOnInit() {
