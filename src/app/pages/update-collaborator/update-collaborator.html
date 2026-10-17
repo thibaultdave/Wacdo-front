@@ -44,11 +44,9 @@
       </div>
       
       <div class="form-element">
-        <label for="password">Mot de passe <span>*</span></label>
-        <input id="password" formControlName="password" type="password" placeholder="Définir un mot de passe"/>
-        @if (collaboratorForm.get('password')?.hasError('required') && collaboratorForm.get('password')?.touched) {
-          <small class="error">Le mot de passe est requis.</small>
-        } @else if (collaboratorForm.get('password')?.hasError('minlength') && collaboratorForm.get('password')?.touched) {
+        <label for="password">Mot de passe <small>(laisser vide pour ne pas modifier)</small></label>
+        <input id="password" formControlName="password" type="password" placeholder="Définir un nouveau mot de passe"/>
+        @if (collaboratorForm.get('password')?.hasError('minlength') && collaboratorForm.get('password')?.touched) {
           <small class="error">Le mot de passe doit contenir au moins 8 caractères.</small>
         }
       </div>
