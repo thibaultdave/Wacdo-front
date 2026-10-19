@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Collaborator as CollaboratorModel } from '../../models/collaborator-response';
 import { CollaboratorService } from '../../services/collaborator-service';
 import { pastOrPresentDateValidator } from '../../validators/past-or-present-date.validator';
-import { Subscription } from 'rxjs';
 
 @Component({
   imports: [ReactiveFormsModule],
@@ -14,16 +13,16 @@ import { Subscription } from 'rxjs';
 })
 export class UpdateCollaborator {
 
-  private collaborator!: CollaboratorModel;
-  private routeSub!: Subscription;
-
+  public id!: string | null;
   public collaboratorForm!: FormGroup;
 
   constructor(
     private collaboratorService: CollaboratorService,
     private router: Router,
     private route: ActivatedRoute
-  ) { 
+  ) {
+    this.id = this.route.snapshot.paramMap.get('id');
+
     this.collaboratorForm = new FormGroup({
       firstName: new FormControl('', Validators.required),
       name: new FormControl('', Validators.required),
@@ -33,37 +32,14 @@ export class UpdateCollaborator {
       password: new FormControl(null, [Validators.minLength(8)]),
     });
 
+    this.getCollaboratorById();
   }
 
-  ngOnInit() {
-    this.routeSub = this.route.params.subscribe(params => {
-      const collaboratorId = +params['id'];
-      this.getCollaboratorById(collaboratorId);
-    });
-  }
-
-  ngOnDestroy() {
-    if (this.routeSub) {
-      this.routeSub.unsubscribe();
-    }
-  }
-
-  private setForm(): void {
-    this.collaboratorForm.patchValue({
-      firstName: this.collaborator.firstName,
-      name: this.collaborator.name,
-      email: this.collaborator.email,
-      firstHireDate: this.collaborator.firstHireDate,
-      admin: this.collaborator.admin,
-    });
-  }
-
-  public getCollaboratorById(id: number) {
-    this.collaboratorService.getCollaboratorById(id).subscribe({
+  public getCollaboratorById() {
+    this.collaboratorService.getCollaboratorById(this.id).subscribe({
       next: (collaborator) => {
-        this.collaborator = collaborator;
-        this.setForm();
-        console.log('Collaborator ', id, ' fetched successfully:', collaborator);
+        this.setForm(collaborator);
+        console.log('Collaborator ', this.id, ' fetched successfully:', collaborator);
       },
       error: (error) => {
         console.error('Error fetching collaborator:', error);
@@ -71,10 +47,20 @@ export class UpdateCollaborator {
     });
   }
 
+  private setForm(collaborator: CollaboratorModel): void {
+    this.collaboratorForm.patchValue({
+      firstName: collaborator.firstName,
+      name: collaborator.name,
+      email: collaborator.email,
+      firstHireDate: collaborator.firstHireDate,
+      admin: collaborator.admin,
+    });
+  }
+
   public updateCollaborator() {
     if (this.collaboratorForm.valid) {
       this.collaboratorService.updateCollaborator(
-        this.collaborator.id,
+        this.id,
         this.collaboratorForm.value
       ).subscribe({
         next: (response) => {

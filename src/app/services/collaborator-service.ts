@@ -19,7 +19,7 @@ export class CollaboratorService {
     return this.http.get<CollaboratorResponse[]>(`${this.apiUrl}`);
   }
 
-  getCollaboratorById(id: number): Observable<CollaboratorResponse> {
+  getCollaboratorById(id: string | null): Observable<CollaboratorResponse> {
     return this.http.get<CollaboratorResponse>(`${this.apiUrl}/${id}`);
   }
 
@@ -31,7 +31,7 @@ export class CollaboratorService {
     return this.http.post<CollaboratorResponse>(`${this.apiUrl}`, collaboratorRequest);
   }
 
-  updateCollaborator(id: number, collaboratorRequest: CollaboratorRequest): Observable<CollaboratorResponse> {
+  updateCollaborator(id: string | null, collaboratorRequest: CollaboratorRequest): Observable<CollaboratorResponse> {
     return this.http.put<CollaboratorResponse>(`${this.apiUrl}/${id}`, collaboratorRequest);
   }
 }
