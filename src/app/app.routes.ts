@@ -7,15 +7,16 @@ import { Restaurants } from './pages/restaurants/restaurants';
 import { Jobs } from './pages/jobs/jobs';
 import { Assignments } from './pages/assignments/assignments';
 import { UpdateCollaborator } from './pages/update-collaborator/update-collaborator';
+import { authGuard } from './guards/auth-guard';
 
 export const routes: Routes = [
   {
       path: '',
-      component: Home,
+      component: Home
   },
   {
       path: 'home',
-      component: Home,
+      component: Home
   },
   {
     path: 'login',
@@ -23,26 +24,32 @@ export const routes: Routes = [
   },
   {
     path: 'collaborators',
-    component: Collaborators
+    component: Collaborators,
+    canActivate: [authGuard]
   },
   {
     path: 'collaborators/new',
-    component: CreateCollaborator
+    component: CreateCollaborator,
+    canActivate: [authGuard]
   },
   {
     path: 'collaborators/update/:id',
-    component: UpdateCollaborator
+    component: UpdateCollaborator,
+    canActivate: [authGuard]
   },
   {
-      path: 'restaurants',
-      component: Restaurants
+    path: 'restaurants',
+    component: Restaurants,
+    canActivate: [authGuard]
   },
   {
     path: 'jobs',
-    component: Jobs
+    component: Jobs,
+    canActivate: [authGuard]
   },
   {
     path: 'assignments',
-    component: Assignments
+    component: Assignments,
+    canActivate: [authGuard]
   },
 ];
