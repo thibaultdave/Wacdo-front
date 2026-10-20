@@ -93,7 +93,6 @@ export class AuthService {
     }
 
     const remainingTime = expiration - Date.now();
-    console.log(`Token expiration in ${remainingTime} ms`);
 
     if (remainingTime <= 0) {
       this.expireSession();
