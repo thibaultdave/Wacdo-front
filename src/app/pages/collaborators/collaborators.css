@@ -46,7 +46,7 @@
 }
 
 .create-button:hover {
-  background: #c90002;
+  background: var(--button-primary-color);
 }
 
 .create-button span {

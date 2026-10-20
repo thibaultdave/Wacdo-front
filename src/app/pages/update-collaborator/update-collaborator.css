@@ -82,7 +82,7 @@ form {
 
 .form-element input:focus {
   outline: none;
-  border-color: #e40204;
+  border-color: var(--primary-color);
   box-shadow: 0 0 0 3px rgb(228 2 4 / 10%);
 }
 

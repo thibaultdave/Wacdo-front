@@ -1,5 +1,7 @@
 :root {
   --primary-color: #E40204;
+  --button-primary-color: #b90000;
+  --button-secondary-color: #900002;
 }
 
 
@@ -12,13 +14,8 @@ body, html {
   display: flex;
   flex-direction: column;
 }
-header, footer {
+footer {
   background-color: var(--primary-color);
   color: white;
   padding: 1em;
-}
-nav a {
-  color: white;
-  margin-right: 1em;
-  text-decoration: none;
 }
