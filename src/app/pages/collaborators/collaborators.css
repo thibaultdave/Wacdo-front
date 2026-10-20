@@ -2,15 +2,62 @@
   display: block;
 }
 
+.collaborators-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 4%);
+}
+
 .page-heading {
-  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .page-heading h1 {
   margin: 0;
-  color: white;
-  font-size: 1.875rem;
+  color: var(--primary-color);
+  font-size: 1.7rem;
   font-weight: 700;
+}
+
+.create-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.7rem 1rem;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background: var(--primary-color);
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.create-button:hover {
+  background: #c90002;
+}
+
+.create-button span {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
 }
 
 .page-heading p {
@@ -38,4 +85,26 @@
   border-radius: 0.75rem;
   color: #6b7280;
   text-align: center;
+}
+
+@media (max-width: 600px) {
+  .collaborators-toolbar {
+    padding: 1rem;
+  }
+
+  .page-heading {
+    align-items: stretch;
+  }
+
+  .page-heading h1 {
+    font-size: 1.4rem;
+  }
+
+  .create-button {
+    align-self: flex-start;
+  }
+
+  .filters {
+    grid-template-columns: 1fr;
+  }
 }

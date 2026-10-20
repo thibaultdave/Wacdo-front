@@ -1,0 +1,9 @@
+<div class="filter-field">
+    <label [for]="inputId()"> {{ label() }} </label>
+    <div class="filter-input-wrapper">
+        <input [id]="inputId()" [type]="inputType()" [placeholder]="placeholder()" [value]="value()" (input)="valueChange.emit($any($event.target).value)"/>
+        @if (value()) {
+            <button type="button" class="clear-filter" [attr.aria-label]="'Réinitialiser le filtre ' + label()" (click)="valueChange.emit('')">×</button>
+        }
+    </div>
+</div>

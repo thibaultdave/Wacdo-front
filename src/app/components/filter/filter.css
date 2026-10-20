@@ -1,0 +1,72 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+
+.filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.filter-field label {
+  color: #374151;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.filter-input-wrapper {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 0.65rem 0 0.8rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: white;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.filter-input-wrapper:focus-within {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgb(228 2 4 / 10%);
+}
+
+.filter-input-wrapper input {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  padding: 0.7rem 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #111827;
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.filter-input-wrapper input::placeholder {
+  color: #9ca3af;
+}
+
+.clear-filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #6b7280;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.clear-filter:hover {
+  background: #f3f4f6;
+  color: var(--primary-color);
+}

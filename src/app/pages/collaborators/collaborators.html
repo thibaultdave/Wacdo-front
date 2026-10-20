@@ -1,21 +1,34 @@
 <main class="collaborators-page">
-  <header class="page-heading">
-    <div>
+  <section class="collaborators-toolbar">
+    <div class="page-heading">
       <h1>Gestion des collaborateurs</h1>
-      <p>Consulte et gère les collaborateurs de Wacdo.</p>
-      <a class="inline-block mb-4 text-white-600 underline" [routerLink]="['/collaborators/new']">+ Nouveau collaborateur</a>
+      <a class="create-button" [routerLink]="['/collaborators/new']">
+        <span aria-hidden="true">+</span>
+        Nouveau collaborateur
+      </a>
     </div>
-  </header>
+    <div class="filters">
+      <app-filter inputId="filter-first-name" label="Prénom" placeholder="Rechercher un prénom..." [value]="firstNameFilter()" (valueChange)="firstNameFilter.set($event)"/>
+
+      <app-filter inputId="filter-name" label="Nom" placeholder="Rechercher un nom..." [value]="nameFilter()" (valueChange)="nameFilter.set($event)"/>
+
+      <app-filter inputId="filter-email" label="E-mail" placeholder="Rechercher une adresse..." inputType="email" [value]="emailFilter()" (valueChange)="emailFilter.set($event)"/>
+    </div>
+  </section>
 
   <section class="collaborators-section">
     <h2>Liste des collaborateurs</h2>
 
     @if (collaborators().length > 0) {
-      <div class="collaborators-list">
-        @for (collaborator of collaborators(); track collaborator.id) {
-          <app-collaborator [collaborator]="collaborator" (collaboratorsUpdated)="refreshCollaborators()"/>
-        }
-      </div>
+      @if (filteredCollaborators().length > 0) {
+        <div class="collaborators-list">
+          @for (collaborator of filteredCollaborators(); track collaborator.id) {
+            <app-collaborator [collaborator]="collaborator" (collaboratorsUpdated)="refreshCollaborators()"/>
+          }
+        </div>
+      } @else {
+        <p class="empty-message">Aucun collaborateur ne correspond à votre recherche.</p>
+      }
     } @else {
       <p class="empty-message">Aucun collaborateur disponible.</p>
     }
