@@ -38,6 +38,7 @@ export class AuthService {
         localStorage.setItem('token', response.token);
         localStorage.setItem('userEmail', request.email);
         this.authenticated.set(true);
+        this.scheduleTokenExpiration();
       })
     );
   }
@@ -58,6 +59,7 @@ export class AuthService {
     }
 
     this.authenticated.set(true);
+    this.scheduleTokenExpiration();
     return true;
   }
 
@@ -91,6 +93,7 @@ export class AuthService {
     }
 
     const remainingTime = expiration - Date.now();
+    console.log(`Token expiration in ${remainingTime} ms`);
 
     if (remainingTime <= 0) {
       this.expireSession();

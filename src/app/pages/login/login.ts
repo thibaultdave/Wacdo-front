@@ -14,6 +14,7 @@ export class Login {
 
   public loginForm: FormGroup;
   public errorMessage = signal('');
+  public sessionExpired = history.state?.sessionExpired === true;
 
   constructor(
     private authService: AuthService,
