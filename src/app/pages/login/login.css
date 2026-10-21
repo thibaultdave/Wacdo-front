@@ -11,20 +11,21 @@ form button {
   color: white;
   border: none;
   cursor: pointer;
+  border-radius: 8px;
 }
 
 form button:hover {
-  background: #c90002;
+  background: var(--button-secondary-color);
 }
 
 h2 {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: var(--primary-color);
 }
 
 small {
-  color: #dc2626;
+  color: var(--primary-color);
   font-size: 0.8rem;
 }
 
