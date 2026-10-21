@@ -23,6 +23,10 @@ export class CollaboratorService {
     return this.http.get<CollaboratorResponse>(`${this.apiUrl}/${id}`);
   }
 
+  getCurrentCollaborator(): Observable<CollaboratorResponse> {
+    return this.http.get<CollaboratorResponse>(`${this.apiUrl}/me`);
+  }
+
   removeCollaborator(id: number): Observable<void> { 
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }

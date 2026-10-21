@@ -14,7 +14,9 @@
 
       @if (isAuthenticated()) {
         <div class="user-actions">
-          <span class="welcome-message">Bonjour, {{ userEmail }}</span>
+          @if (currentCollaborator(); as collaborator) {
+            <span class="welcome-message">Bonjour, {{ collaborator.firstName }} {{ collaborator.name }}</span>
+          }
 
           <button type="button" class="logout-button" (click)="logout()">Déconnexion</button>
         </div>

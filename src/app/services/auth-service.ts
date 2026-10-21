@@ -36,7 +36,6 @@ export class AuthService {
     ).pipe(
       tap(response => {
         localStorage.setItem('token', response.token);
-        localStorage.setItem('userEmail', request.email);
         this.authenticated.set(true);
         this.scheduleTokenExpiration();
       })
@@ -45,7 +44,6 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('token');
-    localStorage.removeItem('userEmail');
     this.authenticated.set(false);
   }
 
