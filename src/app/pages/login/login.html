@@ -1,10 +1,10 @@
-<div class="flex flex-col items-center justify-center px-4">
+<div class="form-container">
   @if (sessionExpired) {
     <div class="session-expired-message" role="alert">
       Votre session a expiré. Veuillez vous reconnecter.
     </div>
   }
-  <form [formGroup]="loginForm" (ngSubmit)="onLogin()"  class="w-full max-w-md bg-white p-8 rounded-lg shadow-md flex flex-col gap-4">
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()"  class="form-login">
     <h2>Connexion</h2>
 
     <input type="email" placeholder="Email" formControlName="email">
