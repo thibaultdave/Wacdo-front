@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { CollaboratorService } from '../../services/collaborator/collaborator-service';
+import { CollaboratorService } from '../../../services/collaborator/collaborator-service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { pastOrPresentDateValidator } from '../../validators/past-or-present-date.validator';
+import { pastOrPresentDateValidator } from '../../../validators/past-or-present-date.validator';
 
 @Component({
   imports: [ReactiveFormsModule],

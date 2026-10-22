@@ -2,11 +2,11 @@ import { Routes } from '@angular/router';
 import { Home } from './pages/home/home';
 import { Login } from './pages/login/login';
 import { Collaborators } from './pages/collaborators/collaborators';
-import { CreateCollaborator } from './pages/create-collaborator/create-collaborator';
+import { CreateCollaborator } from './pages/collaborators/create-collaborator/create-collaborator';
 import { Restaurants } from './pages/restaurants/restaurants';
 import { Jobs } from './pages/jobs/jobs';
 import { Assignments } from './pages/assignments/assignments';
-import { UpdateCollaborator } from './pages/update-collaborator/update-collaborator';
+import { UpdateCollaborator } from './pages/collaborators/update-collaborator/update-collaborator';
 import { authGuard } from './guards/auth-guard';
 
 export const routes: Routes = [
