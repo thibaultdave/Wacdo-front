@@ -3,9 +3,9 @@ import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 
-import { LoginRequest } from '../models/login-request';
-import { LoginResponse } from '../models/login-response';
-import { environment } from '../../environments/environment';
+import { LoginRequest } from '../../models/login-request';
+import { LoginResponse } from '../../models/login-response';
+import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
 
 @Injectable({

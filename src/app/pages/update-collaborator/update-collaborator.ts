@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Collaborator as CollaboratorModel } from '../../models/collaborator-response';
-import { CollaboratorService } from '../../services/collaborator-service';
+import { CollaboratorService } from '../../services/collaborator/collaborator-service';
 import { pastOrPresentDateValidator } from '../../validators/past-or-present-date.validator';
 
 @Component({

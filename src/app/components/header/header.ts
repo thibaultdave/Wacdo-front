@@ -1,7 +1,7 @@
 import { Component, effect, inject, signal } from '@angular/core';
 import { Router, RouterLink } from "@angular/router";
-import { AuthService } from '../../services/auth-service';
-import { CollaboratorService } from '../../services/collaborator-service';
+import { AuthService } from '../../services/auth/auth-service';
+import { CollaboratorService } from '../../services/collaborator/collaborator-service';
 import { Collaborator as CollaboratorModel } from '../../models/collaborator-response';
 
 @Component({

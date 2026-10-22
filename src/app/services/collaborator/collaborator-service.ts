@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Collaborator as CollaboratorResponse } from '../models/collaborator-response';
-import { CollaboratorRequest } from '../models/collaborator-request';
-import { environment } from '../../environments/environment';
+import { Collaborator as CollaboratorResponse } from '../../models/collaborator-response';
+import { CollaboratorRequest } from '../../models/collaborator-request';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'

@@ -1,7 +1,7 @@
 import { Component, OnInit, signal, computed } from '@angular/core';
 import { Collaborator as CollaboratorComponent } from '../../components/collaborator/collaborator';
 import { Collaborator as CollaboratorModel } from '../../models/collaborator-response';
-import { CollaboratorService } from '../../services/collaborator-service';
+import { CollaboratorService } from '../../services/collaborator/collaborator-service';
 import { RouterLink } from '@angular/router';
 import { Filter } from '../../components/filter/filter';
 
