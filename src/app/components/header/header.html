@@ -14,7 +14,7 @@
 
       @if (isAuthenticated()) {
         <div class="user-actions">
-          @if (currentCollaborator(); as collaborator) {
+          @if (currentCollaboratorService.currentCollaborator() ; as collaborator) {
             <span class="welcome-message">Bonjour, {{ collaborator.firstName }} {{ collaborator.name }}</span>
           }
 

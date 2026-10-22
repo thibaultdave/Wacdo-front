@@ -1,7 +1,10 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, effect } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from './components/header/header';
 import { Footer } from './components/footer/footer';
+
+import { AuthService } from './services/auth/auth-service';
+import { CurrentCollaboratorService } from './services/collaborator/current-collaborator-service';
 
 @Component({
   imports: [RouterOutlet, Header, Footer],
@@ -11,4 +14,17 @@ import { Footer } from './components/footer/footer';
 })
 export class App {
   protected readonly title = signal('Wacdo-front');
+
+  constructor(
+    public authService: AuthService,
+    public currentCollaborator: CurrentCollaboratorService
+  ) {
+    effect(() => {
+      if (this.authService.isAuthenticated()) {
+        this.currentCollaborator.loadCurrentCollaborator();
+      } else {
+        this.currentCollaborator.clearCurrentCollaborator();
+      }
+    });
+  }
 }
