@@ -1,1 +1,36 @@
-<p>restaurant works!</p>
+<main class="restaurants-page">
+    <section class="restaurants-toolbar">
+        <div class="page-heading">
+            <h1>Gestion des restaurants</h1>
+            <a class="create-button" [routerLink]="['/restaurants/new']">
+                <span aria-hidden="true">+</span>
+                Nouveau Restaurant
+            </a>
+        </div>
+        <div class="filters">
+            <app-filter inputId="filter-name" label="Nom" placeholder="Rechercher un nom..." [value]="nameFilter()" (valueChange)="nameFilter.set($event)"/>
+
+            <app-filter inputId="filter-postalcode" label="Code Postal" placeholder="Rechercher un code postal..." [value]="postalCodeFilter()" (valueChange)="postalCodeFilter.set($event)"/>
+
+            <app-filter inputId="filter-city" label="Ville" placeholder="Rechercher une ville..." [value]="cityFilter()" (valueChange)="cityFilter.set($event)"/>
+        </div>
+    </section>
+
+    <section class="restaurants-section">
+        <h2>Liste des restaurants</h2>
+
+        @if (restaurants().length >0) {
+            @if (filteredRestaurants().length > 0) {
+                <div class="restaurants-list">
+                    @for (restaurant of filteredRestaurants(); track restaurant.id) {
+                        <app-restaurant [restaurant]="restaurant" (restaurantsUpdated)="refreshRestaurants()"/>
+                    }
+                </div>
+            } @else {
+                <p class="empty-message">Aucun restaurant ne correspond à votre recherche</p>
+            }
+        } @else {
+            <p class="empty-message">Aucun restaurant disponible</p>
+        }
+    </section>
+</main>

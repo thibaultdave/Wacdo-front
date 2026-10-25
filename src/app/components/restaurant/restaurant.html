@@ -1,0 +1,21 @@
+<article class="restaurant-card">
+    <div class="restaurant-info">
+        <div class="restaurant-avatar">
+
+        </div>
+
+        <div class="restaurant-details">
+            <h3>{{ restaurant.name }}</h3>
+        </div>
+
+        <p class="restaurant-address">
+            {{ restaurant.address }}, {{ restaurant.postalCode }} {{ restaurant.city }}
+        </p>
+    </div>
+
+    <div class="restaurant-actions">
+    <button type="button" class="edit-button" routerLink="/restaurants/update/{{ restaurant.id }}"> Modifier </button>
+
+    <button type="button" class="delete-button" (click)="deleteRestaurant()"> Supprimer </button>
+  </div>
+</article>
