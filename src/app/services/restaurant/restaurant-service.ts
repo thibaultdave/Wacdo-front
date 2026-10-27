@@ -23,15 +23,15 @@ export class RestaurantService {
         return this.http.get<RestaurantResponse>(`${this.apiUrl}/${id}`);
       }
     
-      removeRestaurant(id: number): Observable<void> { 
-        return this.http.delete<void>(`${this.apiUrl}/${id}`);
-      }
-    
-      createRestaurant(restaurantRequest: RestaurantRequest): Observable<RestaurantResponse> {
-        return this.http.post<RestaurantResponse>(`${this.apiUrl}`, restaurantRequest);
-      }
-    
-      updateRestaurant(id: string | null, restaurantRequest: RestaurantRequest): Observable<RestaurantResponse> {
-        return this.http.put<RestaurantResponse>(`${this.apiUrl}/${id}`, restaurantRequest);
-      }
+    removeRestaurant(id: number): Observable<void> { 
+      return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    }
+  
+    createRestaurant(restaurantRequest: RestaurantRequest): Observable<RestaurantResponse> {
+      return this.http.post<RestaurantResponse>(`${this.apiUrl}`, restaurantRequest);
+    }
+  
+    updateRestaurant(id: string | null, restaurantRequest: RestaurantRequest): Observable<RestaurantResponse> {
+      return this.http.put<RestaurantResponse>(`${this.apiUrl}/${id}`, restaurantRequest);
+    }
 }
