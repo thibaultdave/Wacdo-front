@@ -1,1 +1,53 @@
-<p>update-restaurant works!</p>
+<div class="form-container">
+    <form [formGroup]="restaurantForm" (ngSubmit)="updateRestaurant()">
+
+        <div class="form-heading">
+        <h1>Modifier un restaurant</h1>
+        <p>Modifiez les informations du restaurant.</p>
+        </div>
+
+        <div class="form-fields">
+            <div class="form-element">
+                <label for="name">Nom <span>*</span></label>
+                <input id="name" formControlName="name" type="text" placeholder="Nom du restaurant" autocomplete="off"/>
+                @if (restaurantForm.get('name')?.hasError('required') && restaurantForm.get('name')?.touched) {
+                    <small class="error">Le nom est requis.</small>
+                }
+            </div>
+
+            <div class="form-element">
+                <label for="address">Adresse <span>*</span></label>
+                <input id="address" formControlName="address" type="text" placeholder="Adresse du restaurant" autocomplete="off"/>
+                @if (restaurantForm.get('address')?.hasError('required') && restaurantForm.get('address')?.touched) {
+                    <small class="error">L'adresse est requise.</small>
+                }
+            </div>
+
+            <div class="form-element">
+                <label for="postalCode">Code postal <span>*</span></label>
+                <input id="postalCode" formControlName="postalCode" type="text" placeholder="Code postal du restaurant" autocomplete="off"/>
+                @if (restaurantForm.get('postalCode')?.hasError('required') && restaurantForm.get('postalCode')?.touched) { 
+                    <small class="error">Le code postal est requis.</small>
+                } @else if (
+                    (restaurantForm.get('postalCode')?.hasError('minlength') || restaurantForm.get('postalCode')?.hasError('maxlength'))
+                    && restaurantForm.get('postalCode')?.touched
+                ) {
+                    <small class="error">Le code postal doit faire 5 caractères.</small>
+                }
+            </div>
+
+            <div class="form-element">
+                <label for="city">Ville <span>*</span></label>
+                <input id="city" formControlName="city" type="text" placeholder="Ville du restaurant" autocomplete="off"/>
+                @if (restaurantForm.get('city')?.hasError('required') && restaurantForm.get('city')?.touched) {
+                    <small class="error">La ville est requise.</small>
+                }
+            </div>
+        </div>
+
+        <div class="form-footer">
+            <p class="required-note"><span>*</span> Champs obligatoires</p>
+            <button type="submit" [disabled]="restaurantForm.invalid">Modifier le restaurant</button>
+        </div>
+    </form>
+</div>
