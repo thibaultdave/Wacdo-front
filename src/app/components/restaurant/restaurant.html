@@ -1,16 +1,16 @@
 <article class="restaurant-card">
     <div class="restaurant-info">
         <div class="restaurant-avatar">
-
+            <img src="/Happy%20Weal.png" alt="Logo Happy Weal">
         </div>
 
         <div class="restaurant-details">
             <h3>{{ restaurant.name }}</h3>
+            <p class="restaurant-address">
+                {{ restaurant.address }}, {{ restaurant.postalCode }} {{ restaurant.city }}
+            </p>
         </div>
 
-        <p class="restaurant-address">
-            {{ restaurant.address }}, {{ restaurant.postalCode }} {{ restaurant.city }}
-        </p>
     </div>
 
     <div class="restaurant-actions">

@@ -34,25 +34,14 @@
   flex-shrink: 0;
   width: 3.25rem;
   height: 3.25rem;
-  border-radius: 50%;
-  background: #f1d69c;
-  color: #f5aa09;
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: xx-small;
 }
 
 .restaurant-details {
   min-width: 0;
 }
 
-.restaurant-heading {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.restaurant-heading h3 {
+.restaurant-details h3 {
   margin: 0;
   color: #111827;
   font-size: 1.05rem;
@@ -98,12 +87,6 @@
 
 .delete-button:hover {
   background: #fee2e2;
-}
-
-.delete-button:disabled {
-  background: #eeeff1;
-  color: #4b5563;
-  cursor: not-allowed !important;
 }
 
 @media (max-width: 600px) {
