@@ -8,6 +8,8 @@ import { Jobs } from './pages/jobs/jobs';
 import { Assignments } from './pages/assignments/assignments';
 import { UpdateCollaborator } from './pages/collaborators/update-collaborator/update-collaborator';
 import { authGuard } from './guards/auth-guard';
+import { CreateRestaurant } from './pages/restaurants/create-restaurant/create-restaurant';
+import { UpdateRestaurant } from './pages/restaurants/update-restaurant/update-restaurant';
 
 export const routes: Routes = [
   {
@@ -40,6 +42,16 @@ export const routes: Routes = [
   {
     path: 'restaurants',
     component: Restaurants,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'restaurants/new',
+    component: CreateRestaurant,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'restaurants/update/:id',
+    component: UpdateRestaurant,
     canActivate: [authGuard]
   },
   {
