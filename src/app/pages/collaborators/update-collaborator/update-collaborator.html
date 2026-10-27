@@ -44,7 +44,7 @@
       </div>
       
       <div class="form-element">
-        <label for="password">Mot de passe <small>(laisser vide pour ne pas modifier)</small></label>
+        <label for="password">Mot de passe <small class="info">(laisser vide pour ne pas modifier)</small></label>
         <input id="password" formControlName="password" type="password" placeholder="Définir un nouveau mot de passe"/>
         @if (collaboratorForm.get('password')?.hasError('minlength') && collaboratorForm.get('password')?.touched) {
           <small class="error">Le mot de passe doit contenir au moins 8 caractères.</small>

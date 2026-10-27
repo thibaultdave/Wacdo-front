@@ -90,7 +90,7 @@ form {
   cursor: pointer;
 }
 
-.form-element small{
+.info {
   color: #6b7280;
   font-size: 0.8rem;
   font-weight: normal;
@@ -98,7 +98,7 @@ form {
 }
 
 .error {
-  color: #dc2626;
+  color: var(--primary-color);
   font-size: 0.8rem;
 }
 
@@ -163,7 +163,7 @@ form {
 }
 
 .form-footer button:hover:not(:disabled) {
-  background: #c90002;
+  background: var(--button-primary-color);
 }
 
 .form-footer button:active:not(:disabled) {
