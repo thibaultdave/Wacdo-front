@@ -4,10 +4,11 @@ import { CollaboratorService } from '../../services/collaborator/collaborator-se
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-collaborator',
   imports: [RouterLink],
-  templateUrl: './collaborator.html',
-  styleUrl: './collaborator.css'
+  selector: 'app-collaborator',
+  styleUrl: './collaborator.css',
+  templateUrl: './collaborator.html'
+  
 })
 export class Collaborator {
 

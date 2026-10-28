@@ -1,0 +1,18 @@
+<article class="job-card">
+    <div class="job-info">
+        <div class="job-avatar">
+            <img src="/Happy%20Weal.png" alt="Logo poste">
+        </div>
+
+        <div class="job-details">
+            <h3>{{ job.name }}</h3>
+        </div>
+
+    </div>
+
+    <div class="job-actions">
+        <button type="button" class="edit-button" routerLink="/jobs/update/{{ job.id }}"> Modifier </button>
+
+        <button type="button" class="delete-button" (click)="deleteJob()"> Supprimer </button>
+  </div>
+</article>
