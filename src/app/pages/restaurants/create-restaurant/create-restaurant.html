@@ -7,44 +7,32 @@
         </div>
 
         <div class="form-fields">
-            <div class="form-element">
-                <label for="name">Nom <span>*</span></label>
-                <input id="name" formControlName="name" type="text" placeholder="Nom du restaurant" autocomplete="off"/>
-                @if (restaurantForm.get('name')?.hasError('required') && restaurantForm.get('name')?.touched) {
-                    <small class="error">Le nom est requis.</small>
-                }
-            </div>
+            <app-form-field id="name" label="Nom" [control]="restaurantForm.get('name')!" placeholder="Nom du restaurant"
+                [errors]="[ 
+                    {key: 'required', message: 'Le nom est requis.'}
+                ]"
+            />
 
-            <div class="form-element">
-                <label for="address">Adresse <span>*</span></label>
-                <input id="address" formControlName="address" type="text" placeholder="Adresse du restaurant" autocomplete="off"/>
-                @if (restaurantForm.get('address')?.hasError('required') && restaurantForm.get('address')?.touched) {
-                    <small class="error">L'adresse est requise.</small>
-                }
-            </div>
+            <app-form-field id="address" label="Adresse" [control]="restaurantForm.get('address')!" placeholder="Adresse du restaurant"
+                [errors]="[ 
+                    {key: 'required', message: 'L\'adresse est requise.'}
+                ]"
+            />
 
-            <div class="form-element">
-                <label for="postalCode">Code postal <span>*</span></label>
-                <input id="postalCode" formControlName="postalCode" type="text" placeholder="Code postal du restaurant" autocomplete="off"/>
-                @if (restaurantForm.get('postalCode')?.hasError('required') && restaurantForm.get('postalCode')?.touched) { 
-                    <small class="error">Le code postal est requis.</small>
-                } @else if (
-                    (restaurantForm.get('postalCode')?.hasError('minlength') || restaurantForm.get('postalCode')?.hasError('maxlength'))
-                    && restaurantForm.get('postalCode')?.touched
-                ) {
-                    <small class="error">Le code postal doit faire 5 caractères.</small>
-                }
-            </div>
+            <app-form-field id="postalCode" label="Code postal" [control]="restaurantForm.get('postalCode')!" placeholder="Code postal du restaurant"
+                [errors]="[ 
+                    {key: 'required', message: 'Le code postal est requis.'},
+                    {key: 'minlength', message: 'Le code postal doit faire 5 caractères.'},
+                    {key: 'maxlength', message: 'Le code postal doit faire 5 caractères.'}
+                ]"
+            />
 
-            <div class="form-element">
-                <label for="city">Ville <span>*</span></label>
-                <input id="city" formControlName="city" type="text" placeholder="Ville du restaurant" autocomplete="off"/>
-                @if (restaurantForm.get('city')?.hasError('required') && restaurantForm.get('city')?.touched) {
-                    <small class="error">La ville est requise.</small>
-                }
-            </div>
+            <app-form-field id="city" label="Ville" [control]="restaurantForm.get('city')!" placeholder="Ville du restaurant"
+                [errors]="[ 
+                    {key: 'required', message: 'La ville est requise.'}
+                ]"
+            />
         </div>
-
 
         <div class="form-footer">
             <p class="required-note"><span>*</span> Champs obligatoires</p>

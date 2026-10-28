@@ -1,0 +1,19 @@
+<div class="form-element">
+    <label [for]="id">
+        {{ label }}
+        @if (moreInfo) {
+            <small class="info">( {{ moreInfo }} )</small>
+        }
+        @if (isRequired) { <span>*</span> }
+    </label>
+
+    <input [id]="id" [formControl]="$any(control)" [type]="type" [placeholder]="placeholder" autocomplete="off"/>
+
+    @if (control.touched) {
+        @for (error of errors; track error.key) {
+            @if (control.hasError(error.key)) {
+                <small class="error"> {{ error.message }} </small>
+            }
+        }
+    }
+</div>  

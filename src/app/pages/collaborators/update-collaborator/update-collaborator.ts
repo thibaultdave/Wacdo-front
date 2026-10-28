@@ -4,9 +4,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Collaborator as CollaboratorModel } from '../../../models/collaborator-response';
 import { CollaboratorService } from '../../../services/collaborator/collaborator-service';
 import { pastOrPresentDateValidator } from '../../../validators/past-or-present-date.validator';
+import { FormField } from '../../../components/form-field/form-field';
 
 @Component({
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, FormField],
   selector: 'app-update-collaborator',
   styleUrl: './update-collaborator.css',
   templateUrl: './update-collaborator.html',

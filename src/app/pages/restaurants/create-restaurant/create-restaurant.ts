@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { RestaurantService } from '../../../services/restaurant/restaurant-service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FormField } from '../../../components/form-field/form-field';
 
 @Component({
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, FormField],
   selector: 'app-create-restaurant',
   styleUrl: './create-restaurant.css',
   templateUrl: './create-restaurant.html',

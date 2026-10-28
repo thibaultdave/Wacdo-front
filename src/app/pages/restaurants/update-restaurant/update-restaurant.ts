@@ -3,9 +3,10 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ActivatedRoute, Router } from '@angular/router';
 import { Restaurant as RestaurantModel } from '../../../models/restaurant-response';
 import { RestaurantService } from '../../../services/restaurant/restaurant-service';
+import { FormField } from '../../../components/form-field/form-field';
 
 @Component({
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, FormField],
   selector: 'app-update-restaurant',
   styleUrl: './update-restaurant.css',
   templateUrl: './update-restaurant.html',
