@@ -52,7 +52,7 @@ export class UpdateRestaurant {
       postalCode: restaurant.postalCode,
       city: restaurant.city,
     });
-}
+  }
   
   public updateRestaurant() {
     if (this.restaurantForm.valid) {

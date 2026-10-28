@@ -1,1 +1,22 @@
-<p>update-job works!</p>
+<div class="form-container">
+    <form [formGroup]="jobForm" (ngSubmit)="updateJob()">
+
+        <div class="form-heading">
+        <h1>Modifier un poste</h1>
+        <p>Modifiez les informations du poste.</p>
+        </div>
+
+        <div class="form-fields">
+            <app-form-field id="name" label="Nom" [control]="jobForm.get('name')!" placeholder="Intitulé du poste"
+                [errors]="[ 
+                    {key: 'required', message: 'L\'intitulé est requis.'}
+                ]"
+            />
+        </div>
+
+        <div class="form-footer">
+            <p class="required-note"><span>*</span> Champs obligatoires</p>
+            <button type="submit" [disabled]="jobForm.invalid">Modifier le job</button>
+        </div>
+    </form>
+</div>

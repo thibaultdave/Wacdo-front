@@ -10,6 +10,8 @@ import { UpdateCollaborator } from './pages/collaborators/update-collaborator/up
 import { authGuard } from './guards/auth-guard';
 import { CreateRestaurant } from './pages/restaurants/create-restaurant/create-restaurant';
 import { UpdateRestaurant } from './pages/restaurants/update-restaurant/update-restaurant';
+import { CreateJob } from './pages/jobs/create-job/create-job';
+import { UpdateJob } from './pages/jobs/update-job/update-job';
 
 export const routes: Routes = [
   {
@@ -57,6 +59,16 @@ export const routes: Routes = [
   {
     path: 'jobs',
     component: Jobs,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'jobs/new',
+    component: CreateJob,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'jobs/update/:id',
+    component: UpdateJob,
     canActivate: [authGuard]
   },
   {
