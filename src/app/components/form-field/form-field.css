@@ -11,8 +11,7 @@
   font-weight: 600;
 }
 
-.form-element label span,
-.required-note span {
+.form-element label span {
   color: var(--primary-color);
 }
 

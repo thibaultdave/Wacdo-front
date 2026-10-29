@@ -88,6 +88,10 @@ form {
   font-size: 0.8rem;
 }
 
+.required-note span {
+  color: var(--primary-color);
+}
+
 .form-footer button {
   width: 100%;
   min-height: 48px;
