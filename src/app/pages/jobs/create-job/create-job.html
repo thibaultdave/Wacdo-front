@@ -1,1 +1,22 @@
-<p>create-job works!</p>
+<div class="form-container">
+    <form [formGroup]="jobForm" (ngSubmit)="createJob()">
+
+        <div class="form-heading">
+            <h1>Créer un poste</h1>
+            <p>Renseignez les informations du nouveau poste.</p>
+        </div>
+
+        <div class="form-fields">
+            <app-form-field id="name" label="Nom" [control]="jobForm.get('name')!" placeholder="Intitulé du poste"
+                [errors]="[ 
+                    {key: 'required', message: 'L\'intitulé est requis.'}
+                ]"
+            />
+        </div>
+
+        <div class="form-footer">
+            <p class="required-note"><span>*</span> Champs obligatoires</p>
+            <button type="submit" [disabled]="jobForm.invalid">Créer le poste</button>
+        </div>
+    </form>
+</div>
