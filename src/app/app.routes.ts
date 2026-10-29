@@ -12,6 +12,8 @@ import { CreateRestaurant } from './pages/restaurants/create-restaurant/create-r
 import { UpdateRestaurant } from './pages/restaurants/update-restaurant/update-restaurant';
 import { CreateJob } from './pages/jobs/create-job/create-job';
 import { UpdateJob } from './pages/jobs/update-job/update-job';
+import { CreateAssignment } from './pages/assignments/create-assignment/create-assignment';
+import { UpdateAssignment } from './pages/assignments/update-assignment/update-assignment';
 
 export const routes: Routes = [
   {
@@ -74,6 +76,16 @@ export const routes: Routes = [
   {
     path: 'assignments',
     component: Assignments,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'assignments/new',
+    component: CreateAssignment,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'assignments/update/:id',
+    component: UpdateAssignment,
     canActivate: [authGuard]
   },
 ];
