@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import { Job as JobResponse } from '../../models/job-response';
-import { JobRequest } from '../../models/job-request';
+import { Assignment as AssignmentResponse } from '../../models/assignment-response';
+import { AssignmentRequest } from '../../models/assignment-request';
 
 @Injectable({
   providedIn: 'root'
@@ -15,23 +15,23 @@ export class AssignmentService {
     
     constructor(private http: HttpClient) { }
 
-    getAssignments(): Observable<JobResponse[]> {
-        return this.http.get<JobResponse[]>(`${this.apiUrl}`);
+    getAssignments(): Observable<AssignmentResponse[]> {
+        return this.http.get<AssignmentResponse[]>(`${this.apiUrl}`);
     }
 
-    getAssignmentById(id: string | null): Observable<JobResponse> {
-        return this.http.get<JobResponse>(`${this.apiUrl}/${id}`);
+    getAssignmentById(id: string | null): Observable<AssignmentResponse> {
+        return this.http.get<AssignmentResponse>(`${this.apiUrl}/${id}`);
         }
     
     removeAssignment(id: number): Observable<void> { 
         return this.http.delete<void>(`${this.apiUrl}/${id}`);
     }
     
-    createAssignment(jobRequest: JobRequest): Observable<JobResponse> {
-        return this.http.post<JobResponse>(`${this.apiUrl}`, jobRequest);
+    createAssignment(assignmentRequest: AssignmentRequest): Observable<AssignmentResponse> {
+        return this.http.post<AssignmentResponse>(`${this.apiUrl}`, assignmentRequest);
     }
     
-    updateAssignment(id: string | null, jobRequest: JobRequest): Observable<JobResponse> {
-        return this.http.put<JobResponse>(`${this.apiUrl}/${id}`, jobRequest);
+    updateAssignment(id: string | null, assignmentRequest: AssignmentRequest): Observable<AssignmentResponse> {
+        return this.http.put<AssignmentResponse>(`${this.apiUrl}/${id}`, assignmentRequest);
     }
 }
