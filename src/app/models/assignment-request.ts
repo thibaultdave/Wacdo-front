@@ -1,4 +1,4 @@
-export interface RestaurantRequest {
+export interface AssignmentRequest {
     collaboratorId: number;
     restaurantId: number;
     jobId: number;
