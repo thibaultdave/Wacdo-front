@@ -1,0 +1,101 @@
+:host {
+  display: block;
+}
+
+.assignment-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.25rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 4%);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.assignment-card:hover {
+  border-color: #f7dada;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 8%);
+}
+
+.assignment-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.assignment-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 3.25rem;
+  height: 3.25rem;
+  font-size: xx-small;
+}
+
+.assignment-details {
+  min-width: 0;
+}
+
+.assignment-element {
+  margin: 0.35rem 0 0;
+  font-size: 0.875rem;
+  overflow-wrap: anywhere;
+}
+
+.assignment-date {
+  margin: 0.35rem 0 0;
+  color: #6b7280;
+  font-size: 0.875rem;
+  overflow-wrap: anywhere;
+}
+
+.assignment-actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.5rem;
+}
+
+.assignment-actions button {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid transparent;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.edit-button {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.edit-button:hover {
+  background: #dbeafe;
+}
+
+.delete-button {
+  background: #fef2f2;
+  color: var(--primary-color);
+}
+
+.delete-button:hover {
+  background: #fee2e2;
+}
+
+@media (max-width: 600px) {
+  .assignment-card {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .assignment-actions {
+    justify-content: flex-end;
+  }
+}

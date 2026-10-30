@@ -1,4 +1,4 @@
-import { Component, OnInit, signal, computed } from '@angular/core';
+import { Component, signal, computed } from '@angular/core';
 import { Collaborator as CollaboratorComponent } from '../../components/collaborator/collaborator';
 import { Collaborator as CollaboratorModel } from '../../models/collaborator-response';
 import { CollaboratorService } from '../../services/collaborator/collaborator-service';
@@ -11,8 +11,7 @@ import { Filter } from '../../components/filter/filter';
   styleUrl: './collaborators.css',
   templateUrl: './collaborators.html',
 })
-  
-export class Collaborators implements OnInit {
+export class Collaborators {
 
   collaborators = signal<CollaboratorModel[]>([]);
 

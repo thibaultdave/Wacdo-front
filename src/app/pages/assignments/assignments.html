@@ -1,1 +1,36 @@
-<p>assignments works!</p>
+<main class="assignments-page">
+  <section class="assignments-toolbar">
+    <div class="page-heading">
+      <h1>Gestion des affectations</h1>
+      <a class="create-button" [routerLink]="['/assignments/new']">
+        <span aria-hidden="true">+</span>
+        Nouvelle affectation
+      </a>
+    </div>
+    <div class="filters">
+      <app-filter inputId="filter-collaborator" label="Collaborateur" placeholder="Rechercher un collaborateur..." [value]="collaboratorFilter()" (valueChange)="collaboratorFilter.set($event)"/>
+
+      <app-filter inputId="filter-restaurant" label="Restaurant" placeholder="Rechercher un restaurant..." [value]="restaurantFilter()" (valueChange)="restaurantFilter.set($event)"/>
+
+      <app-filter inputId="filter-job" label="Poste" placeholder="Rechercher un poste..." inputType="email" [value]="jobFilter()" (valueChange)="jobFilter.set($event)"/>
+    </div>
+  </section>
+
+  <section class="assignments-section">
+    <h2>Liste des affectations</h2>
+
+    @if (assignments().length > 0) {
+      @if (filteredAssignments().length > 0) {
+        <div class="assignments-list">
+          @for (assignment of filteredAssignments(); track assignment.id) {
+            <app-assignment [assignment]="assignment" (assignmentsUpdated)="refreshAssignments()"/>
+          }
+        </div>
+      } @else {
+        <p class="empty-message">Aucune affectation ne correspond à votre recherche.</p>
+      }
+    } @else {
+      <p class="empty-message">Aucune affectation disponible.</p>
+    }
+  </section>
+</main>

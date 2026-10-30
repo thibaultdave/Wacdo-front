@@ -1,0 +1,25 @@
+<article class="assignment-card">
+    <div class="assignment-info">
+        <div class="assignment-avatar">
+            <img src="/Happy%20Weal.png" alt="Logo Happy Weal">
+        </div>
+
+    <div class="assignment-details">
+        <p class="assignment-element">{{ assignment.collaborator.name }} - {{ assignment.job.name }}</p>
+        <p class="assignment-element">{{ assignment.restaurant.name }}</p>
+
+        <p class="assignment-date">
+            Début le {{ changeDateFormat(assignment.startDate) }}
+            @if (assignment.startDate) {
+                | Fin le {{ changeDateFormat(assignment.endDate!) }}
+            }
+        </p>
+    </div>
+  </div>
+
+  <div class="assignment-actions">
+    <button type="button" class="edit-button" routerLink="/assignments/update/{{ assignment.id }}"> Modifier </button>
+
+    <button type="button" class="delete-button" (click)="deleteAssignment()"> Supprimer </button>
+  </div>
+</article>
