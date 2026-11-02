@@ -10,7 +10,7 @@
 
         <p class="assignment-date">
             Début le {{ changeDateFormat(assignment.startDate) }}
-            @if (assignment.startDate) {
+            @if (assignment.endDate) {
                 | Fin le {{ changeDateFormat(assignment.endDate!) }}
             }
         </p>
