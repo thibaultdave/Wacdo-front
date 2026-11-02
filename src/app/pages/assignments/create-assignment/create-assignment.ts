@@ -58,7 +58,6 @@ export class CreateAssignment {
         console.error('Error retrieving collaborators:', error);
       }
     });
-    console.log('Options collaborateurs :', this.collaboratorOptions);
   }
 
   setRestaurantOptions() {
@@ -75,8 +74,6 @@ export class CreateAssignment {
         console.error('Error retrieving restaurants:', error);
       }
     });
-
-    console.log('Options restaurants :', this.restaurantOptions);
   }
 
   setJobOptions() {
@@ -97,7 +94,17 @@ export class CreateAssignment {
 
   public createAssignment() {
     if (this.assignmentForm.valid) {
-      this.assignmentService.createAssignment(this.assignmentForm.value).subscribe({
+      const formValue = this.assignmentForm.value;
+
+      const assignmentRequest = {
+        collaboratorId: formValue.collaborator,
+        restaurantId: formValue.restaurant,
+        jobId: formValue.job,
+        startDate: formValue.startDate,
+        endDate: formValue.endDate || null
+      };
+
+      this.assignmentService.createAssignment(assignmentRequest).subscribe({
         next: (response) => {
           this.router.navigate(['/assignments']);
           console.log('Assignment created successfully:', response);
