@@ -12,10 +12,12 @@ export class FormField {
   @Input({ required: true }) label!: string;
   @Input({ required: true }) control!: AbstractControl;
 
+  @Input() options: { label: string; value: string | number }[] = [];
+
   @Input() type = 'text';
   @Input() placeholder = '';
   @Input() isRequired = true;
   @Input() moreInfo = '';
 
-  @Input() errors: { key: string ; message: string }[] = [];
+  @Input() errors: { key: string; message: string }[] = [];
 }

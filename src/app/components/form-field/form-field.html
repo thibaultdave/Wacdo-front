@@ -7,11 +7,20 @@
         @if (isRequired) { <span>*</span> }
     </label>
 
-    <input [id]="id" [formControl]="$any(control)" [type]="type" [placeholder]="placeholder" autocomplete="off"/>
+    @if (type === 'select') {
+        <select [id]="id" [formControl]="$any(control)">
+            <option [ngValue]="null" disabled   >{{ placeholder || '-- Sélectionner --' }}</option>
+            @for (option of options; track option.value) {
+                <option [ngValue]="option.value"> {{ option.label }} </option>
+            }
+        </select>
+    } @else {
+        <input [id]="id" [formControl]="$any(control)" [type]="type" [placeholder]="placeholder" autocomplete="off"/>
+    }
 
-    @if (control.touched) {
+    @if (control?.touched) {
         @for (error of errors; track error.key) {
-            @if (control.hasError(error.key)) {
+            @if (control?.hasError(error.key)) {
                 <small class="error"> {{ error.message }} </small>
             }
         }
