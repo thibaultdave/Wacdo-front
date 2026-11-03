@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Collaborator as CollaboratorModel } from '../../models/collaborator-response';
 import { CollaboratorService } from '../../services/collaborator/collaborator-service';
 import { RouterLink } from '@angular/router';
+import { CurrentCollaboratorService } from '../../services/collaborator/current-collaborator-service';
 
 @Component({
   imports: [RouterLink],
@@ -16,7 +17,7 @@ export class Collaborator {
   @Output() collaboratorsUpdated = new EventEmitter<boolean>();
 
   isSameUser(): boolean {
-    const userEmail = localStorage.getItem('userEmail');
+    const userEmail = this.currentCollaboratorService.currentCollaborator()?.email;
     return userEmail === this.collaborator.email;
   }
 
@@ -28,7 +29,10 @@ export class Collaborator {
     return `${day}/${month}/${year}`;
   }
 
-  constructor(private collaboratorService: CollaboratorService) {  }
+  constructor(
+    private collaboratorService: CollaboratorService,
+    private currentCollaboratorService: CurrentCollaboratorService
+  ) { }
 
   public deleteCollaborator() {
     this.collaboratorService.removeCollaborator(this.collaborator.id).subscribe({
