@@ -1,4 +1,4 @@
-//import { Assignment } from './assignment';
+import { Assignment } from './assignment';
 
 export interface Restaurant {
       id: number;
@@ -6,5 +6,5 @@ export interface Restaurant {
       address: string;
       postalCode: string;
       city: string;
-      assignments: unknown[]; //TODO: Replace unknown with Assignment when Assignment is defined
+      assignments: Assignment[];
 }

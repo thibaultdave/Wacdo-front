@@ -1,4 +1,4 @@
-//import { Assignment } from './assignment';
+import { Assignment } from './assignment';
 
 export interface Collaborator {
       id: number;
@@ -7,5 +7,5 @@ export interface Collaborator {
       email: string;
       firstHireDate: string;
       admin: boolean;
-      assignments: unknown[]; //TODO: Replace unknown with Assignment when Assignment is defined
+      assignments: Assignment[];
 }
