@@ -42,4 +42,18 @@ export class Login {
       this.loginForm.markAllAsTouched();
     }
   }
+
+  public autoFillAdmin() {
+    this.loginForm.setValue({
+      email: 'admin@test.fr',
+      password: 'password123'
+    });
+  }
+
+  public autoFillUser() {
+    this.loginForm.setValue({
+      email: 'user@test.fr',
+      password: 'password456'
+    });
+  }
 }

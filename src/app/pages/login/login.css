@@ -59,3 +59,23 @@ small {
   border-radius: 8px;
   font-size: 0.9rem;
 }
+
+.automated-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.automated-buttons button {
+  background: #003399;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.automated-buttons button:hover {
+  background: #0055cc;
+}
