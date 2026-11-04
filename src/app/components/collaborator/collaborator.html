@@ -21,6 +21,40 @@
         Embauché le {{ changeDateFormat(collaborator.firstHireDate) }}
       </p>
     </div>
+
+    <div class="collaborator-assignments">
+      @if (collaborator.assignments.length > 0) {
+        <div class="assignment-header">
+          <span class="assignment-badge">
+            {{ collaborator.assignments.length }}
+            {{ collaborator.assignments.length > 1 ? 'affectations' : 'affectation' }}
+          </span>
+        </div>
+
+        @if (getCurrentAssignment(); as assignment) {
+          <div class="current-assignment">
+
+            <div class="assignment-information">
+              <span class="assignment-job">{{ assignment.job.name }}</span>
+
+              <span class="assignment-restaurant">{{ assignment.restaurant.name }}, {{ assignment.restaurant.city }}</span>
+            </div>
+
+            <span class="assignment-date">
+              Depuis le {{ changeDateFormat(assignment.startDate) }}
+            </span>
+          </div>
+        } @else {
+          <div class="no-assignment">
+            <span>Aucune affectation en cours</span>
+          </div>
+        }
+      } @else {
+        <div class="no-assignment">
+          <span>Aucune affectation</span>
+        </div>
+      }
+    </div>
   </div>
 
   <div class="collaborator-actions">

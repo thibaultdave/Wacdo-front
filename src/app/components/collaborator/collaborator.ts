@@ -45,4 +45,8 @@ export class Collaborator {
       }
     });
   }
+
+  public getCurrentAssignment() {
+    return this.collaborator.assignments.find(assignment => assignment.endDate === null) ?? null;
+  }
 }
