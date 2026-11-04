@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Assignment as AssignmentModel } from '../../models/assignment';
+import { AssignmentSummary as AssignmentModel } from '../../models/assignment-summary';
 import { RouterLink } from '@angular/router';
 import { AssignmentService } from '../../services/assignment/assignment-service';
 

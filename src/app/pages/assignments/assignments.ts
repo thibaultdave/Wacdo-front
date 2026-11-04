@@ -1,5 +1,5 @@
 import { Component, computed, signal } from '@angular/core';
-import { Assignment as AssignmentModel } from '../../models/assignment'
+import { AssignmentSummary as AssignmentModel } from '../../models/assignment-summary';
 import { Assignment as AssignmentCompoment } from '../../components/assignment/assignment';
 import { AssignmentService } from '../../services/assignment/assignment-service'
 import { RouterLink } from '@angular/router';

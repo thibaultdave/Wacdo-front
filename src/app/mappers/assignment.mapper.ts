@@ -1,10 +1,10 @@
-import { Assignment } from '../models/assignment';
-import { AssignmentResponse } from '../models/assignment-response';
+import { AssignmentSummary } from '../models/assignment-summary';
+import { Assignment as AssignmentResponse } from '../models/assignment-response';
 import { SummarizedObject } from '../models/summarized-object';
-import { Collaborator} from '../models/collaborator-response';
-import { Restaurant } from '../models/restaurant-response';
+import { CollaboratorSummary } from '../models/collaborator-summary';
+import { RestaurantSummary } from '../models/restaurant-summary';
 
-export function mapAssignment(response: AssignmentResponse): Assignment {
+export function mapAssignment(response: AssignmentResponse): AssignmentSummary {
     return {
         ...response,
         collaborator: mapCollaborator(response.collaborator),
@@ -13,7 +13,7 @@ export function mapAssignment(response: AssignmentResponse): Assignment {
 }
 
 export function mapCollaborator(
-    collaborator: Collaborator
+    collaborator: CollaboratorSummary
 ): SummarizedObject {
     return {
         id: collaborator.id,
@@ -22,7 +22,7 @@ export function mapCollaborator(
 }
 
 export function mapRestaurant(
-    restaurant: Restaurant
+    restaurant: RestaurantSummary
 ): SummarizedObject {
     return {
         id: restaurant.id,

@@ -1,4 +1,4 @@
-import { Assignment } from './assignment';
+import { Assignment } from './assignment-response';
 
 export interface Collaborator {
       id: number;

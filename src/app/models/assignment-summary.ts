@@ -1,6 +1,6 @@
 import { SummarizedObject } from "./summarized-object";
 
-export interface Assignment {
+export interface AssignmentSummary {
     id: number;
     collaborator: SummarizedObject;
     restaurant: SummarizedObject;

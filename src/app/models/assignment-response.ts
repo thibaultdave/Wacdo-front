@@ -1,11 +1,11 @@
-import { Collaborator } from "./collaborator-response";
+import { CollaboratorSummary } from "./collaborator-summary";
 import { Job } from "./job-response";
-import { Restaurant } from "./restaurant-response";
+import { RestaurantSummary } from "./restaurant-summary";
 
-export interface AssignmentResponse {
+export interface Assignment {
     id: number;
-    collaborator: Collaborator;
-    restaurant: Restaurant;
+    collaborator: CollaboratorSummary;
+    restaurant: RestaurantSummary;
     job: Job;
     startDate: string;
     endDate: string | null;

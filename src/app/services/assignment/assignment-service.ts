@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 
-import { AssignmentResponse } from '../../models/assignment-response';
+import { Assignment as AssignmentResponse } from '../../models/assignment-response';
+import { AssignmentSummary as AssignmentModel } from '../../models/assignment-summary';
 import { AssignmentRequest } from '../../models/assignment-request';
 import { environment } from '../../../environments/environment';
-import { Assignment as AssignmentModel } from '../../models/assignment';
 import { mapAssignment } from '../../mappers/assignment.mapper';
 
 @Injectable({
