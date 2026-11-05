@@ -11,6 +11,31 @@
             </p>
         </div>
 
+        <div class="restaurant-assignments">
+            @if (getCurrentAssignments().length > 0) {
+                <button type="button" class="assignments-toggle" (click)="toggleAssignments()">
+                    {{ getCurrentAssignments().length }}
+                    {{ getCurrentAssignments().length === 1 ? 'collaborateur' : 'collaborateurs' }}
+                    <span>{{ showAssignments ? '▲' : '▼' }}</span>
+                </button>
+
+                @if (showAssignments) {
+                    <div class="assignments-list">
+                        @for (assignment of getCurrentAssignments(); track assignment.id) {
+                        <div class="assignment-item">
+                            <strong>
+                            {{ assignment.collaborator.firstName }}
+                            {{ assignment.collaborator.name }}
+                            </strong>
+                            <span>{{ assignment.job.name }}</span>
+                        </div>
+                        }
+                    </div>
+                }
+            } @else {
+                <span class="no-assignment">Aucun collaborateur actuellement affecté</span>
+            }
+        </div>
     </div>
 
     <div class="restaurant-actions">

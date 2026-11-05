@@ -14,6 +14,8 @@ export class Restaurant {
   @Input() restaurant!: RestaurantModel;
   @Output() restaurantsUpdated = new EventEmitter<boolean>();
 
+  public showAssignments = false;
+
   constructor(private restaurantService: RestaurantService) { }
 
   public deleteRestaurant() {
@@ -26,5 +28,23 @@ export class Restaurant {
         console.error('Error deleting restaurant:', error);
       }
     });
+  }
+
+  public toggleAssignments() {
+    this.showAssignments = !this.showAssignments;
+  }
+
+  public getCurrentAssignments() {
+    return this.restaurant.assignments.filter(
+      assignment => !assignment.endDate
+    );
+  }
+
+  public changeDateFormat(dateString: string): string {
+    const date = new Date(dateString);
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
   }
 }
