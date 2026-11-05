@@ -45,6 +45,11 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('token');
     this.authenticated.set(false);
+
+    if (this.expirationTimer !== null) {
+      clearTimeout(this.expirationTimer);
+      this.expirationTimer = null;
+    }
   }
 
   // Check if the token is valid and not expired
