@@ -43,6 +43,7 @@ export class Login {
     }
   }
 
+  // This methods are used for quick login during development, testing and training exam.
   public autoFillAdmin() {
     this.loginForm.setValue({
       email: 'admin@test.fr',
