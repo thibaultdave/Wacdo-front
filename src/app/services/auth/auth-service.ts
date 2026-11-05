@@ -71,7 +71,9 @@ export class AuthService {
       return false;
     }
 
-    return this.getTokenExpiration(token) !== null;
+    const expiration = this.getTokenExpiration(token);
+
+    return expiration !== null && expiration > Date.now();
   }
 
   // Schedule the token expiration check to prevent the user from staying logged in with an expired token
