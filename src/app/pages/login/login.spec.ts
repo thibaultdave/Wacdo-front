@@ -64,7 +64,7 @@ describe('Login', () => {
   // LOGIN
 
   it('should call api and navigate on success', () => {
-    authServiceSpy.login.mockReturnValue(of({ accessToken: 'mockToken' }));
+    authServiceSpy.login.mockReturnValue(of({ token: 'mockToken' }));
     const navigateSpy = vi.spyOn(router, 'navigate');
 
     component.loginForm.setValue({
