@@ -133,7 +133,7 @@ describe('AuthService', () => {
   });
 
   it('should logout when token is expired', () => {
-    const token = createToken(Date.now() - 1000);
+    const token = createToken(Date.now() - 6000);
 
     localStorage.setItem('token', token);
 
