@@ -2,12 +2,14 @@ import { Component, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AssignmentService } from '../../../services/assignment/assignment-service';
 import { Router } from '@angular/router';
-import { pastOrPresentDateValidator } from '../../../validators/past-or-present-date.validator';
 import { FormField } from '../../../components/form-field/form-field';
 import { JobService } from '../../../services/job/job-service';
 import { RestaurantService } from '../../../services/restaurant/restaurant-service';
 import { CollaboratorService } from '../../../services/collaborator/collaborator-service';
 import { SelectOption } from '../../../models/select-option';
+import { endAfterStartDateValidator } from '../../../validators/end-after-start-date.validator';
+import { DestroyRef, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   imports: [ReactiveFormsModule, FormField],
@@ -16,7 +18,9 @@ import { SelectOption } from '../../../models/select-option';
   templateUrl: './create-assignment.html',
 })
 export class CreateAssignment {
+  
   public assignmentForm: FormGroup;
+  private destroyRef = inject(DestroyRef);
 
   collaboratorOptions = signal<SelectOption[]>([]);
   restaurantOptions = signal<SelectOption[]>([]);
@@ -33,9 +37,14 @@ export class CreateAssignment {
       collaborator: new FormControl<number | null>(null, Validators.required),
       restaurant: new FormControl<number | null>(null, Validators.required),
       job: new FormControl<number | null>(null, Validators.required),
-      startDate: new FormControl('', [Validators.required, pastOrPresentDateValidator()]),
-      endDate: new FormControl('', pastOrPresentDateValidator())
+      startDate: new FormControl('', Validators.required),
+      endDate: new FormControl('', endAfterStartDateValidator('startDate'))
     })
+    this.assignmentForm.get('startDate')?.valueChanges
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => {
+        this.assignmentForm.get('endDate')?.updateValueAndValidity();
+      });
   }
 
   ngOnInit(): void {

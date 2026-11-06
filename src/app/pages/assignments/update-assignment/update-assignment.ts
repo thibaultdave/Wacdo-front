@@ -3,11 +3,13 @@ import { FormField } from '../../../components/form-field/form-field';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AssignmentService } from '../../../services/assignment/assignment-service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { pastOrPresentDateValidator } from '../../../validators/past-or-present-date.validator';
 import { SelectOption } from '../../../models/select-option';
 import { CollaboratorService } from '../../../services/collaborator/collaborator-service';
 import { RestaurantService } from '../../../services/restaurant/restaurant-service';
 import { JobService } from '../../../services/job/job-service';
+import { endAfterStartDateValidator } from '../../../validators/end-after-start-date.validator';
+import { DestroyRef, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   imports: [ReactiveFormsModule, FormField],
@@ -19,6 +21,7 @@ export class UpdateAssignment {
 
   public id!: string | null;
   public assignmentForm!: FormGroup;
+  private destroyRef = inject(DestroyRef);
 
   collaboratorOptions = signal<SelectOption[]>([]);
   restaurantOptions = signal<SelectOption[]>([]);
@@ -38,9 +41,14 @@ export class UpdateAssignment {
       collaborator: new FormControl<number | null>(null, Validators.required),
       restaurant: new FormControl<number | null>(null, Validators.required),
       job: new FormControl<number | null>(null, Validators.required),
-      startDate: new FormControl('', [Validators.required, pastOrPresentDateValidator()]),
-      endDate: new FormControl('', pastOrPresentDateValidator())
+      startDate: new FormControl('', Validators.required),
+      endDate: new FormControl('', [Validators.required, endAfterStartDateValidator('startDate')])
     });
+    this.assignmentForm.get('startDate')?.valueChanges
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => {
+        this.assignmentForm.get('endDate')?.updateValueAndValidity();
+      });
 
     this.getAssignmentById();
   }

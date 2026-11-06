@@ -30,14 +30,13 @@
 
         <app-form-field id="startDate" label="Date de début" [control]="assignmentForm.get('startDate')!" type="date"
             [errors]="[ 
-                {key: 'required', message: 'La date de début est requise.'},
-                {key: 'futureDate', message: 'La date ne peut pas être dans le futur.'}
+                {key: 'required', message: 'La date de début est requise.'}
             ]"
         />
 
         <app-form-field id="endDate" label="Date de fin" [control]="assignmentForm.get('endDate')!" type="date" [isRequired]="false"
             [errors]="[
-                {key: 'futureDate', message: 'La date ne peut pas être dans le futur.'}
+                {key: 'endDateNotAfterStartDate', message: 'La date de fin doit être postérieure à la date de début.'}
             ]"
         />
     </div>
