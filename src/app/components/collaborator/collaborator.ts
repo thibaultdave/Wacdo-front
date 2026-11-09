@@ -47,6 +47,13 @@ export class Collaborator {
   }
 
   public getCurrentAssignment() {
-    return this.collaborator.assignments.find(assignment => assignment.endDate === null) ?? null;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    return this.collaborator.assignments.find((assignment) => {
+      const startDate = new Date(`${assignment.startDate}T00:00:00`);
+
+      return startDate <= today && assignment.endDate === null;
+    }) ?? null;
   }
 }
