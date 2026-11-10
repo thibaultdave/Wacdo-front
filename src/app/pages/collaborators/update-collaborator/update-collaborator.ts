@@ -28,13 +28,20 @@ export class UpdateCollaborator {
     this.collaboratorForm = new FormGroup({
       firstName: new FormControl('', Validators.required),
       name: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.required, Validators.email]),
+      email: new FormControl('', {
+        validators: [Validators.required, Validators.email],
+        updateOn: 'blur'
+      }),
       firstHireDate: new FormControl('', [Validators.required, pastOrPresentDateValidator()]),
       admin: new FormControl(false),
       password: new FormControl(null, [Validators.minLength(8)]),
     });
 
-    this.getCollaboratorById();
+    if (this.id) {
+      this.getCollaboratorById();
+    } else {
+      this.router.navigate(['/collaborators']);
+    }
   }
 
   public getCollaboratorById() {
