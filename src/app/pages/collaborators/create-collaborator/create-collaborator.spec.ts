@@ -86,7 +86,9 @@ describe('CreateCollaborator', () => {
 
       expect(collaboratorServiceSpy.createCollaborator).not.toHaveBeenCalled();
       expect(component.collaboratorForm.get('firstName')?.touched).toBe(true);
+      expect(component.collaboratorForm.get('name')?.touched).toBe(true);
       expect(component.collaboratorForm.get('email')?.touched).toBe(true);
+      expect(component.collaboratorForm.get('firstHireDate')?.touched).toBe(true);
       expect(component.collaboratorForm.get('password')?.touched).toBe(true);
     });
   });
