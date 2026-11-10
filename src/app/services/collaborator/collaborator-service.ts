@@ -27,6 +27,10 @@ export class CollaboratorService {
     return this.http.get<CollaboratorResponse>(`${this.apiUrl}/me`);
   }
 
+  emailExists(email: string): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/email-exists`, { params: { email } });
+  }
+
   removeCollaborator(id: number): Observable<void> { 
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }

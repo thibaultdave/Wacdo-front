@@ -22,7 +22,8 @@
       <app-form-field id="email" label="Adresse e-mail" [control]="collaboratorForm.get('email')!" placeholder="gerard.bouchard@exemple.fr" type="email"
         [errors]="[ 
           {key: 'required', message: 'L\'adresse e-mail est requise.'},
-          {key: 'email', message: 'Format d\'adresse e-mail invalide.'}
+          {key: 'email', message: 'Format d\'adresse e-mail invalide.'},
+          {key: 'emailAlreadyExists', message: 'Cette adresse e-mail est déjà utilisée.'}
         ]"
       />
 

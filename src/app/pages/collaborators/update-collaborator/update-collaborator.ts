@@ -5,6 +5,7 @@ import { Collaborator as CollaboratorModel } from '../../../models/collaborator-
 import { CollaboratorService } from '../../../services/collaborator/collaborator-service';
 import { pastOrPresentDateValidator } from '../../../validators/past-or-present-date.validator';
 import { FormField } from '../../../components/form-field/form-field';
+import { uniqueEmailValidator } from '../../../validators/unique-email-validator';
 
 @Component({
   imports: [ReactiveFormsModule, FormField],
@@ -56,6 +57,12 @@ export class UpdateCollaborator {
       firstHireDate: collaborator.firstHireDate,
       admin: collaborator.admin,
     });
+
+    this.collaboratorForm.get('email')?.setAsyncValidators(
+      uniqueEmailValidator(this.collaboratorService, collaborator.email)
+    );
+
+    this.collaboratorForm.get('email')?.updateValueAndValidity();
   }
 
   public updateCollaborator() {

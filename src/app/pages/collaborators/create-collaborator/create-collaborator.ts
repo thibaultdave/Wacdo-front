@@ -4,6 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router } from '@angular/router';
 import { pastOrPresentDateValidator } from '../../../validators/past-or-present-date.validator';
 import { FormField } from '../../../components/form-field/form-field';
+import { uniqueEmailValidator } from '../../../validators/unique-email-validator';
 
 @Component({
   imports: [ReactiveFormsModule, FormField],
@@ -21,7 +22,13 @@ export class CreateCollaborator {
     this.collaboratorForm = new FormGroup({
       firstName: new FormControl('', Validators.required),
       name: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.required, Validators.email]),
+      email: new FormControl(
+        '',
+        {
+          validators: [Validators.required, Validators.email],
+          asyncValidators: [uniqueEmailValidator(this.collaboratorService)],
+          updateOn: 'blur'
+        }),
       firstHireDate: new FormControl('', [Validators.required, pastOrPresentDateValidator()]),
       admin: new FormControl(false),
       password: new FormControl('', [Validators.required, Validators.minLength(8)]),
