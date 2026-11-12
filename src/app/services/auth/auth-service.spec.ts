@@ -55,110 +55,122 @@ describe('AuthService', () => {
 
   // LOGIN
 
-  it('should login and store the token on success', () => {
-    const token = createToken(Date.now() + 3600000);
+  describe('login', () => {
 
-    service.login({
-      email: 'test@test.com',
-      password: 'password'
-    }).subscribe();
+    it('should login and store the token on success', () => {
+      const token = createToken(Date.now() + 3600000);
 
-    const request = httpMock.expectOne(`${apiUrl}/login`);
+      service.login({
+        email: 'test@test.com',
+        password: 'password'
+      }).subscribe();
 
-    expect(request.request.method).toBe('POST');
-    expect(request.request.body).toEqual({
-      email: 'test@test.com',
-      password: 'password'
+      const request = httpMock.expectOne(`${apiUrl}/login`);
+
+      expect(request.request.method).toBe('POST');
+      expect(request.request.body).toEqual({
+        email: 'test@test.com',
+        password: 'password'
+      });
+
+      request.flush({ token });
+
+      expect(localStorage.getItem('token')).toBe(token);
+      expect(service.isAuthenticated()).toBe(true);
     });
 
-    request.flush({ token });
+    it('should not authenticate when login fails', () => {
+      service.login({
+        email: 'test@test.com',
+        password: 'wrongPassword'
+      }).subscribe({
+        error: () => { }
+      });
 
-    expect(localStorage.getItem('token')).toBe(token);
-    expect(service.isAuthenticated()).toBe(true);
-  });
+      const request = httpMock.expectOne(`${apiUrl}/login`);
 
-  it('should not authenticate when login fails', () => {
-    service.login({
-      email: 'test@test.com',
-      password: 'wrongPassword'
-    }).subscribe({
-      error: () => {}
+      request.flush(
+        { message: 'Unauthorized' },
+        { status: 401, statusText: 'Unauthorized' }
+      );
+
+      expect(localStorage.getItem('token')).toBeNull();
+      expect(service.isAuthenticated()).toBe(false);
     });
-
-    const request = httpMock.expectOne(`${apiUrl}/login`);
-
-    request.flush(
-      { message: 'Unauthorized' },
-      { status: 401, statusText: 'Unauthorized' }
-    );
-
-    expect(localStorage.getItem('token')).toBeNull();
-    expect(service.isAuthenticated()).toBe(false);
   });
 
   // LOGOUT
 
-  it('should logout and remove the token', () => {
-    const token = createToken(Date.now() + 3600000);
+  describe('logout', () => {
+    
+    it('should logout and remove the token', () => {
+      const token = createToken(Date.now() + 3600000);
 
-    localStorage.setItem('token', token);
+      localStorage.setItem('token', token);
 
-    service.checkAuthentication();
+      service.checkAuthentication();
 
-    expect(service.isAuthenticated()).toBe(true);
+      expect(service.isAuthenticated()).toBe(true);
 
-    service.logout();
+      service.logout();
 
-    expect(localStorage.getItem('token')).toBeNull();
-    expect(service.isAuthenticated()).toBe(false);
+      expect(localStorage.getItem('token')).toBeNull();
+      expect(service.isAuthenticated()).toBe(false);
+    });
   });
 
   // CHECK AUTHENTICATION
 
-  it('should logout when token is invalid', () => {
-    localStorage.setItem('token', 'invalid-token');
+  describe('checkAuthentication', () => {
 
-    expect(service.checkAuthentication()).toBe(false);
-    expect(service.isAuthenticated()).toBe(false);
-    expect(localStorage.getItem('token')).toBeNull();
-  });
+    it('should logout when token is invalid', () => {
+      localStorage.setItem('token', 'invalid-token');
 
-  it('should return true when token is valid', () => {
-    const token = createToken(Date.now() + 3600000);
+      expect(service.checkAuthentication()).toBe(false);
+      expect(service.isAuthenticated()).toBe(false);
+      expect(localStorage.getItem('token')).toBeNull();
+    });
 
-    localStorage.setItem('token', token);
+    it('should return true when token is valid', () => {
+      const token = createToken(Date.now() + 3600000);
 
-    expect(service.checkAuthentication()).toBe(true);
-    expect(service.isAuthenticated()).toBe(true);
-  });
+      localStorage.setItem('token', token);
 
-  it('should logout when token is expired', () => {
-    const token = createToken(Date.now() - 6000);
+      expect(service.checkAuthentication()).toBe(true);
+      expect(service.isAuthenticated()).toBe(true);
+    });
 
-    localStorage.setItem('token', token);
+    it('should logout when token is expired', () => {
+      const token = createToken(Date.now() - 6000);
 
-    expect(service.checkAuthentication()).toBe(false);
-    expect(service.isAuthenticated()).toBe(false);
-    expect(localStorage.getItem('token')).toBeNull();
+      localStorage.setItem('token', token);
+
+      expect(service.checkAuthentication()).toBe(false);
+      expect(service.isAuthenticated()).toBe(false);
+      expect(localStorage.getItem('token')).toBeNull();
+    });
   });
 
   // SESSION EXPIRATION
 
-  it('should logout and navigate to login when session expires', () => {
-    const navigateSpy = vi.spyOn(router, 'navigate');
+  describe('expireSession', () => {
+    
+    it('should logout and navigate to login when session expires', () => {
+      const navigateSpy = vi.spyOn(router, 'navigate');
 
-    const token = createToken(Date.now() + 3600000);
-    localStorage.setItem('token', token);
+      const token = createToken(Date.now() + 3600000);
+      localStorage.setItem('token', token);
 
-    service.checkAuthentication();
+      service.checkAuthentication();
 
-    service.expireSession();
+      service.expireSession();
 
-    expect(localStorage.getItem('token')).toBeNull();
-    expect(service.isAuthenticated()).toBe(false);
+      expect(localStorage.getItem('token')).toBeNull();
+      expect(service.isAuthenticated()).toBe(false);
 
-    expect(navigateSpy).toHaveBeenCalledWith(['/login'], {
-      state: { sessionExpired: true }
+      expect(navigateSpy).toHaveBeenCalledWith(['/login'], {
+        state: { sessionExpired: true }
+      });
     });
   });
 });
