@@ -1,8 +1,6 @@
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { describe, expect, it, vi } from 'vitest';
 import { pastOrPresentDateValidator } from './past-or-present-date.validator';
-import { CollaboratorService } from '../services/collaborator/collaborator-service';
-import { of, throwError } from 'rxjs';
 
 describe('pastOrPresentDateValidator', () => {
   const validator = pastOrPresentDateValidator();
