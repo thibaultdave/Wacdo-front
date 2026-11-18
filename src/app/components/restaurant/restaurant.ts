@@ -35,9 +35,19 @@ export class Restaurant {
   }
 
   public getCurrentAssignments() {
-    return this.restaurant.assignments.filter(
-      assignment => !assignment.endDate
-    );
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    return this.restaurant.assignments.filter((assignment) => {
+      const startDate = new Date(`${assignment.startDate}T00:00:00`);
+      const endDate = new Date(`${assignment.endDate}T00:00:00`);
+
+      return startDate <= today &&
+        (
+          assignment.endDate === null ||
+          endDate >= today
+        )
+    });
   }
 
   public changeDateFormat(dateString: string): string {

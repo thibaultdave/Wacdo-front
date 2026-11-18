@@ -52,8 +52,13 @@ export class Collaborator {
 
     return this.collaborator.assignments.find((assignment) => {
       const startDate = new Date(`${assignment.startDate}T00:00:00`);
+      const endDate = new Date(`${assignment.endDate}T00:00:00`);
 
-      return startDate <= today && assignment.endDate === null;
+      return startDate <= today &&
+        (
+          assignment.endDate === null ||
+          endDate >= today
+        )
     }) ?? null;
   }
 }

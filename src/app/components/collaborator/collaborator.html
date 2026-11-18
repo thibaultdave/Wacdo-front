@@ -40,9 +40,15 @@
               <span class="assignment-restaurant">{{ assignment.restaurant.name }}, {{ assignment.restaurant.city }}</span>
             </div>
 
-            <span class="assignment-date">
-              Depuis le {{ changeDateFormat(assignment.startDate) }}
-            </span>
+            @if (assignment.endDate) {
+              <span class="assignment-date">
+                Du {{ changeDateFormat(assignment.startDate) }} au {{ changeDateFormat(assignment.endDate) }}
+              </span>
+            } @else {
+              <span class="assignment-date">
+                Depuis le {{ changeDateFormat(assignment.startDate) }}
+              </span>
+            }
           </div>
         } @else {
           <div class="no-assignment">
