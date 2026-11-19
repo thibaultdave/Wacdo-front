@@ -138,7 +138,7 @@ describe('Collaborator', () => {
 
   describe('getCurrentAssignment', () => {
 
-    it('should return the current assignment', () => {
+    it('should return the current assignment with null endDate', () => {
       const assignment = {
         startDate: '2025-01-15',
         endDate: null
@@ -147,6 +147,20 @@ describe('Collaborator', () => {
       fixture.componentRef.setInput('collaborator', createCollaborator({
         assignments: [assignment]
       }));
+
+      expect(component.getCurrentAssignment()).toBe(assignment);
+    });
+
+    it('should return the current assignment with future endDate', () => {
+      const assignment = {
+        startDate: '2025-01-15',
+        endDate: '2030-01-15'
+      } as CollaboratorModel['assignments'][number];
+
+      fixture.componentRef.setInput('collaborator', createCollaborator({
+        assignments: [assignment]
+      }));
+      fixture.detectChanges();
 
       expect(component.getCurrentAssignment()).toBe(assignment);
     });
