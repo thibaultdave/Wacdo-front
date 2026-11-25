@@ -154,7 +154,15 @@ describe('Collaborator', () => {
     it('should return the current assignment with future endDate', () => {
       const assignment = {
         startDate: '2025-01-15',
-        endDate: '2030-01-15'
+        endDate: '2030-01-15',
+        restaurant: {
+          id: 1,
+          name: 'Restaurant Marseille'
+        },
+        job: {
+          id: 1,
+          name: 'Manager'
+        }
       } as CollaboratorModel['assignments'][number];
 
       fixture.componentRef.setInput('collaborator', createCollaborator({
