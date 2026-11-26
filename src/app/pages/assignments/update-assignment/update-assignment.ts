@@ -42,7 +42,7 @@ export class UpdateAssignment {
       restaurant: new FormControl<number | null>(null, Validators.required),
       job: new FormControl<number | null>(null, Validators.required),
       startDate: new FormControl('', Validators.required),
-      endDate: new FormControl('', [Validators.required, endAfterStartDateValidator('startDate')])
+      endDate: new FormControl('', endAfterStartDateValidator('startDate'))
     });
     this.assignmentForm.get('startDate')?.valueChanges
       .pipe(takeUntilDestroyed(this.destroyRef))
